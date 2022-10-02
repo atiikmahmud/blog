@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-light shadow sticky-top">
-    <div class="container-fluid">
+    <div class="container">
       <a class="navbar-brand" href="/">
         <img src="https://www.freeiconspng.com/thumbs/blogger-logo-icon-png/blogger-logo-icon-png-10.png" alt="" height="35px" width="35px">
         Blog
@@ -35,10 +35,10 @@
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
+                <a class="nav-link @if($title == 'Register') active @endif" href="/register">Register</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link @if($title == 'Login') active @endif" href="/login">Login</a>
             </li>
         </ul>
       </div>
