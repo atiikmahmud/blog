@@ -17,21 +17,31 @@
                         <div class="card-header">
                             <div class='h3 text-center'>Login</div>
                         </div>
-                        <div class="card-body">                                                    
-                            <form action="">
+                        <div class="card-body">
+                            
+                            @if (session('status'))
+                                <div class="mb-4 font-medium text-sm text-green-600">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+                            
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
                                 <div class="form-group mb-3">
                                     <label>Email</label>
-                                    <input type="email" class='form-control mt-1' id="email" autoComplete='off' required/>
+                                    <input type="email" id="email" class='form-control mt-1' name="email" :value="old('email')" required autofocus/>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Password</label>
-                                    <input type="password" class='form-control mt-1' id="pwd" autoComplete='off' required />
+                                    <input type="password" class='form-control mt-1' id="password" type="password" name="password" required autocomplete="current-password" />
                                 </div>
                                 <div class="form-group mb-2">
-                                    <small>If you are not register, <a href="/register">click here</a>.</small>
+                                    @if (Route::has('password.request'))
+                                    <small><a href="{{ route('password.request') }}">Forgot your password?</a>.</small>
+                                    @endif
                                 </div>
                                 <div class="form-group">
-                                    <button type="button" class='btn btn-primary'>Login</button>
+                                    <button type="submit" class='btn btn-primary'>Login</button>
                                 </div>
                             </form>                        
                         </div>

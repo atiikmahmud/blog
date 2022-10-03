@@ -20,12 +20,12 @@
                         <div class="card-body">
                             
                             @if ($errors->any())
-                            @foreach ($errors->all() as $error)
-                            <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
-                                {{ $error }}
-                                <button type="button" class="btn btn-sm btn-close" style="padding: 8px" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            @endforeach
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+                                        {{ $error }}
+                                        <button type="button" class="btn btn-sm btn-close" style="padding: 8px" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @endforeach
                             @endif
                             
                             @if(session()->has('success'))
@@ -36,10 +36,10 @@
                             @endif
 
                             @if(session()->has('error'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {{ session()->get('error') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ session()->get('error') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             @endif
                             
                             <form action="{{ route('contact.post' )}}" method="POST">   
