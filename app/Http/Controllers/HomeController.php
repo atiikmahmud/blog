@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -32,13 +33,23 @@ class HomeController extends Controller
 
     public function register()
     {
-        $title = 'Register';
-        return view('register', compact('title'));
+        if (Auth::user()){
+            $title = 'Home';
+            return view('home', compact('title'));
+        }else{
+            $title = 'Register';
+            return view('register', compact('title'));
+        }
     }
 
     public function login()
     {
-        $title = 'Login';
-        return view('login', compact('title'));
+        if (Auth::user()){
+            $title = 'Home';
+            return view('home', compact('title'));
+        }else{
+            $title = 'Login';
+            return view('login', compact('title'));
+        }
     }
 }

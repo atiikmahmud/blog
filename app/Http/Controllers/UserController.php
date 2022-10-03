@@ -10,4 +10,10 @@ class UserController extends Controller
     {
         return view('dashboard');
     }
+
+    public function profile()
+    {
+        $title = 'Profile';
+        return view('users.profile', compact('title'));
+    }
 }

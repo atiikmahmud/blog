@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light shadow sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" href="/admin">
         <img src="{{url('/image/blog-logo.png')}}" alt="" height="35px" width="35px">
         <div class="brand-title d-inline">
           Blog
@@ -11,23 +11,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link @if($title == 'Home') active @endif" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link @if($title == 'Blog') active @endif" href="/blog">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link @if($title == 'About Us') active @endif" href="/about-us">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link @if($title == 'Contacts') active @endif" href="/contacts">Contacts</a>
-          </li>
+          
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
-          
-          @if(auth()->user())
-          
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 @if(Auth::user()->profile_photo_path)
@@ -39,7 +25,7 @@
                 @endif
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a></li>
+                <li><a class="dropdown-item" href="{{ route('admin.profile') }}">Profile</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
                   <form method="POST" action="{{ route('logout') }}">
@@ -49,17 +35,6 @@
                 </li>
               </ul>
             </li>
-
-          @else
-          
-            <li class="nav-item">
-                <a class="nav-link @if($title == 'Register') active @endif" href="/register">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link @if($title == 'Login') active @endif" href="/login">Login</a>
-            </li>            
-          
-          @endif
         </ul>
       </div>
     </div>

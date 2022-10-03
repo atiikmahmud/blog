@@ -13,15 +13,21 @@ Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
 Route::get('/register', [HomeController::class, 'register'])->name('register');
 Route::get('/login',    [HomeController::class, 'login'])->name('login');
 
-Route::post('/contacts', [ContactController::class, 'store'])->name('contact.post');
+Route::fallback(function () 
+{   
+    $title = 'Page not found';
+    return view('nopage', compact('title')); 
+});
+
+Route::post('/contacts',[ContactController::class, 'store'])->name('contact.post');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' ])->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+    Route::get('/profile',   [UserController::class, 'profile'])->name('user.profile');
 
 });
 
 Route::group(['middleware' => ['auth', 'role']], function() {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin',         [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
 });
-
-// Route::get('')
