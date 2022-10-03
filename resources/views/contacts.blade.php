@@ -19,11 +19,27 @@
                         </div>
                         <div class="card-body">
                             
+                            @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+                                {{ $error }}
+                                <button type="button" class="btn btn-sm btn-close" style="padding: 8px" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endforeach
+                            @endif
+                            
                             @if(session()->has('success'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     {{ session()->get('success') }}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
+                            @endif
+
+                            @if(session()->has('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session()->get('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                             @endif
                             
                             <form action="{{ route('contact.post' )}}" method="POST">   
@@ -38,7 +54,7 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label htmlFor="">Message</label>
-                                    <textarea rows="5" cols="12" class='form-control' name="message"></textarea>
+                                    <textarea rows="5" cols="12" class='form-control' name="message" required></textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type='submit' class='btn btn-primary'>Send</button>
