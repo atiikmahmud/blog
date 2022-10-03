@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light shadow sticky-top">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <img src="https://www.freeiconspng.com/thumbs/blogger-logo-icon-png/blogger-logo-icon-png-10.png" alt="" height="35px" width="35px">
+        <img src="{{url('/image/blog-logo.png')}}" alt="" height="35px" width="35px">
         Blog
         </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,25 +21,37 @@
           <li class="nav-item">
             <a class="nav-link @if($title == 'Contacts') active @endif" href="/contacts">Contacts</a>
           </li>
-          {{-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li> --}}
         </ul>
         <ul class="navbar-nav mb-2 mb-lg-0">
+          
+          @if(auth()->user())
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ auth()->user()->name }}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ route('profile.show') }}">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="dropdown-item">Logout</button>
+                  </form>
+                </li>
+              </ul>
+            </li>
+
+          @else
+          
             <li class="nav-item">
                 <a class="nav-link @if($title == 'Register') active @endif" href="/register">Register</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link @if($title == 'Login') active @endif" href="/login">Login</a>
-            </li>
+            </li>            
+          
+          @endif
         </ul>
       </div>
     </div>

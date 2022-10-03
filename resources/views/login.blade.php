@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="login-image">
-                    <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg?w=2000" alt="login_image" class='d-block mx-auto mt-3' style="height: 600px" />
+                    <img src="{{url('/image/login.jpg')}}" alt="login_image" class='d-block mx-auto mt-3' style="height: 600px" />
                 </div>
             </div>
             <div class="col-md-6">
@@ -34,11 +34,6 @@
                                 <div class="form-group mb-3">
                                     <label>Password</label>
                                     <input type="password" class='form-control mt-1' id="password" type="password" name="password" required autocomplete="current-password" />
-                                </div>
-                                <div class="form-group mb-2">
-                                    @if (Route::has('password.request'))
-                                    <small><a href="{{ route('password.request') }}">Forgot your password?</a>.</small>
-                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class='btn btn-primary'>Login</button>

@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="contact-image">
-                    <img src="http://unblast.com/wp-content/uploads/2020/09/Contact-Us-Vector-Illustration-1.jpg" alt="contact_image" class='d-block mx-auto mt-5' style="height: 500px" />
+                    <img src="{{url('/image/contacts.jpg')}}" alt="contact_image" class='d-block mx-auto mt-5' style="height: 500px" />
                 </div>
             </div>
             <div class="col-md-6">

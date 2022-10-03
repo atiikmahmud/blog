@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="contact-image">
-                    <img src="https://img.freepik.com/free-vector/about-us-concept-illustration_114360-639.jpg?w=2000" alt="contact_image" class='d-block mx-auto mt-5' style="height: 500px"/>
+                    <img src="{{url('/image/about.jpg')}}" alt="contact_image" class='d-block mx-auto mt-5' style="height: 500px"/>
                 </div>
             </div>
             <div class="col-md-6">

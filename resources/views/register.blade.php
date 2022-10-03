@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="login-image">
-                    <img src="https://img.freepik.com/premium-vector/online-registration-illustration-design-concept-websites-landing-pages-other_108061-938.jpg?w=2000" alt="login_image" class='d-block mx-auto mt-5' style="height: 500px"/>
+                    <img src="{{url('/image/register.jpg')}}" alt="login_image" class='d-block mx-auto mt-5' style="height: 500px"/>
                 </div>
             </div>
             <div class="col-md-6">
@@ -18,22 +18,36 @@
                             <div class='h3 text-center'>Register</div>
                         </div>
                         <div class="card-body">
-                            <form>
+                            
+                            @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+                                        {{ $error }}
+                                        <button type="button" class="btn btn-sm btn-close" style="padding: 8px" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @endforeach
+                            @endif
+
+                            <form method="POST" action="{{ route('register') }}">
+                                @csrf
                                 <div class="form-group mb-3">
                                     <label>Name</label>
-                                    <input type="name" class='form-control mt-1' id="name" autoComplete='off' required/>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label>Image</label>
-                                    <input type="file" class='form-control mt-1' id="image" required/>
+                                    <input type="text" id="name" class='form-control mt-1' name="name" :value="old('name')" required autofocus autocomplete="name"/>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Email</label>
-                                    <input type="email" class='form-control mt-1' id="email" autoComplete='off' required/>
+                                    <input type="email" id="email" class='form-control mt-1' name="email" :value="old('email')" required/>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label>Password</label>
-                                    <input type="password" class='form-control mt-1' id="password" autoComplete='off' required />
+                                    <input type="password" id="password" class='form-control mt-1'  name="password" required autocomplete="new-password" />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label>Confirm Password</label>
+                                    <input type="password" id="password_confirmation" class='form-control mt-1'  name="password_confirmation" required autocomplete="new-password" />
+                                </div>
+                                <div class="form-group mb-2">
+                                    <small>If you already registered, <a href="{{ route('login') }}">Login here.</a></small>
                                 </div>
                                 <div class="form-group">
                                     <button type='submit' class='btn btn-primary'>Submit</button>
