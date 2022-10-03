@@ -18,18 +18,27 @@
                             <div class='h3 text-center'>Contact</div>
                         </div>
                         <div class="card-body">
-                            <form>                            
+                            
+                            @if(session()->has('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session()->get('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+                            
+                            <form action="{{ route('contact.post' )}}" method="POST">   
+                                @csrf                         
                                 <div class="form-group mb-3">
                                     <label htmlFor="">Name</label>
-                                    <input type="text" class='form-control mt-1' id="name" required/>
+                                    <input type="text" class='form-control mt-1' name="name" required/>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label htmlFor="">Email</label>
-                                    <input type="email" class='form-control mt-1'id="email" required/>
+                                    <input type="email" class='form-control mt-1' name="email" required/>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label htmlFor="">Message</label>
-                                    <textarea rows="5" cols="12" class='form-control'></textarea>
+                                    <textarea rows="5" cols="12" class='form-control' name="message"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type='submit' class='btn btn-primary'>Send</button>
