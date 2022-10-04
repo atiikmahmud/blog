@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light shadow sticky-top">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <img src="{{url('/image/blog-logo.png')}}" alt="" height="35px" width="35px">
+        <img src="{{url('/image/blog-logo.png')}}" alt="" class="d-inline" height="35px" width="35px">
         <div class="brand-title d-inline">
           Blog
         </div>
@@ -34,7 +34,7 @@
                   <img src="/storage/profile-photos/{{basename(Auth::user()->profile_photo_path)}}" alt="{{ Auth::user()->name }}" class="d-inline border rounded-circle" height="30px" width="30px">&ensp;
                   {{ Auth::user()->name }}
                 @else
-                  <img src="/storage/profile-photos/user.jpg" alt="{{ Auth::user()->name }}" class="d-inline border rounded-circle" height="30px" width="30px">&ensp;
+                  <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="d-inline border rounded-circle" height="30px" width="30px">&ensp;
                   {{ Auth::user()->name }}
                 @endif
               </a>
