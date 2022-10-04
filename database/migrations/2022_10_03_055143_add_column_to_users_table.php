@@ -15,7 +15,7 @@ class AddColumnToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('role')->default(0)->after('name');
-            $table->string('image')->nullable()->after('email');
+            $table->integer('status')->default(1)->after('email');
         });
     }
 
