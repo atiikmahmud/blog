@@ -29,6 +29,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
     Route::get('/add-post',  [PostController::class, 'addPost'])->name('add.post');
     Route::post('/add-post', [PostController::class, 'store'])->name('store.post');
     Route::get('/post-list', [PostController::class, 'userPost'])->name('list.post');
+    Route::get('/posts/{id}',[PostController::class, 'show'])->name('show.post');
+    Route::delete('/post-delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 
 });
 
