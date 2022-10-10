@@ -49,8 +49,38 @@ class PostController extends Controller
     {
         $title = 'Posts';
         $post = Post::where('id', $id)->first();
-        // dd($post);
         return view('posts.single-post', compact('title', 'post'));
+    }
+
+    public function edit($id)
+    {
+        $title = 'Edit Post';
+        $post = Post::where('id', $id)->first();
+        return view('posts.edit', compact('title', 'post'));
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'title'    => 'required',
+            'body'   => 'required',
+            'tag' => 'required'
+        ]);
+
+        try{
+            $post = Post::find($request->id);
+            $post->title   = $request->title;
+            $post->body    = $request->body;
+            $post->tag     = $request->tag;
+            $post->user_id = Auth()->user()->id;
+            $post->save();
+
+            return redirect()->back()->with('success', 'Post updated successfully !!');
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', 'Post not update !!');
+        }
     }
 
     public function destroy($id)

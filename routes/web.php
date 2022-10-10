@@ -7,12 +7,13 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',         [HomeController::class, 'index'])->name('home');
-Route::get('/blog',     [HomeController::class, 'blog'])->name('blog');
-Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
-Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
-Route::get('/register', [HomeController::class, 'register'])->name('register');
-Route::get('/login',    [HomeController::class, 'login'])->name('login');
+Route::get('/',                 [HomeController::class, 'index'])->name('home');
+Route::get('/blog',             [HomeController::class, 'blog'])->name('blog');
+Route::get('/single-post/{id}', [HomeController::class, 'show'])->name('single.post');
+Route::get('/about-us',         [HomeController::class, 'aboutUs'])->name('about-us');
+Route::get('/contacts',         [HomeController::class, 'contacts'])->name('contacts');
+Route::get('/register',         [HomeController::class, 'register'])->name('register');
+Route::get('/login',            [HomeController::class, 'login'])->name('login');
 
 Route::fallback(function () 
 {   
@@ -26,11 +27,13 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
     Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
     Route::get('/profile',   [UserController::class, 'profile'])->name('user.profile');
     
-    Route::get('/add-post',  [PostController::class, 'addPost'])->name('add.post');
-    Route::post('/add-post', [PostController::class, 'store'])->name('store.post');
-    Route::get('/post-list', [PostController::class, 'userPost'])->name('list.post');
-    Route::get('/posts/{id}',[PostController::class, 'show'])->name('show.post');
-    Route::delete('/post-delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+    Route::get('/add-post',             [PostController::class, 'addPost'])->name('add.post');
+    Route::post('/add-post',            [PostController::class, 'store'])->name('store.post');
+    Route::get('/post-list',            [PostController::class, 'userPost'])->name('list.post');
+    Route::get('/posts/{id}',           [PostController::class, 'show'])->name('show.post');
+    Route::get('/edit-post/{id}',       [PostController::class, 'edit'])->name('edit.post');
+    Route::post('/edit-post',           [PostController::class, 'update'])->name('update.post');
+    Route::delete('/post-delete/{id}',  [PostController::class, 'destroy'])->name('post.destroy');
 
 });
 

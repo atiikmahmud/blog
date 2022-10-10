@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,15 @@ class HomeController extends Controller
     public function blog()
     {
         $title = 'Posts';
-        return view('blog', compact('title'));
+        $posts = Post::with('users')->get();
+        return view('blog', compact('title', 'posts'));
+    }
+
+    public function show($id)
+    {
+        $title = 'Posts';
+        $post = Post::where('id', $id)->first();
+        return view('single-post', compact('title', 'post'));
     }
 
     public function aboutUs()

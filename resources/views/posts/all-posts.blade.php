@@ -42,7 +42,7 @@
                                 <td>
                                     <a href="{{ route('show.post', $item->id) }}" class='btn btn-sm btn-primary' style=" marginright: 5px; ">View</a>
                                     <form action="{{ route('post.destroy', $item->id) }}" method="POST" class="d-inline">
-                                        <a class='btn btn-sm btn-warning' style=" marginright: 5px; ">Edit</a>
+                                        <a href="{{ route('edit.post', $item->id) }}" onclick="return confirm('Are you sure, edit this post?')" class='btn btn-sm btn-warning' style=" marginright: 5px;">Edit</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Are you sure, delete this post?')" class="btn btn-sm btn-danger">Delete</button>
