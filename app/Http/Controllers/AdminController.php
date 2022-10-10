@@ -17,9 +17,4 @@ class AdminController extends Controller
       $title = 'Profile';
       return view('admin.profile', compact('title'));
     }
-
-    public function test()
-    {
-      return view('admin.index');
-    }
 }
