@@ -1,9 +1,9 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.index') }}">
         <div class="sidebar-brand-icon">
-            <img src="{{url('/image/blog-logo.png')}}" alt="" class="d-inline" height="35px" width="35px">
+           <i class="fab fa-blogger-b"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Blog</div>
     </a>
@@ -13,7 +13,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -22,6 +22,58 @@
     <hr class="sidebar-divider">
 
     <!-- Heading -->
+    <div class="sidebar-heading">
+        Post Management
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-file-powerpoint"></i>
+            <span>Posts</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-file-signature"></i>
+            <span>Add Posts</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-comment-alt"></i>
+            <span>Comments</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        User Management
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    
+    <!-- Nav Item - Charts -->
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-users"></i>
+            <span>Users</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+            <i class="fas fa-user-plus"></i>
+            <span>Add User</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    {{-- <!-- Heading -->
     <div class="sidebar-heading">
         Interface
     </div>
@@ -102,10 +154,10 @@
         <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
-    </li>
+    </li> --}}
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    {{-- <hr class="sidebar-divider d-none d-md-block"> --}}
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
