@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -52,7 +53,8 @@ class PostController extends Controller
     {
         $title = 'Posts';
         $post = Post::where('id', $id)->first();
-        return view('posts.single-post', compact('title', 'post'));
+        $comments = Comment::with('users')->with('reply')->where('post_id', $id)->get();
+        return view('posts.single-post', compact('title', 'post', 'comments'));
     }
 
     public function edit($id)
