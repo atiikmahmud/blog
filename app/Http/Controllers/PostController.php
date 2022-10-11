@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -11,7 +12,8 @@ class PostController extends Controller
     public function addPost()
     {
         $title = 'Add-Post';
-        return view('posts.add-post', compact('title'));
+        $categories = Category::all();
+        return view('posts.add-post', compact('title', 'categories'));
     }
 
     public function store(Request $request)
@@ -28,6 +30,7 @@ class PostController extends Controller
             $post->body    = $request->body;
             $post->tag     = $request->tag;
             $post->user_id = Auth()->user()->id;
+            $post->category_id = $request->category;
             $post->save();
 
             return redirect()->back()->with('success', 'Post created successfully !!');
@@ -41,7 +44,7 @@ class PostController extends Controller
     public function userPost()
     {
         $title = 'Posts';
-        $posts = Post::where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc')->paginate(7);
+        $posts = Post::with('categories')->where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc')->paginate(7);
         return view('posts.all-posts', compact('title', 'posts'));
     }
 
@@ -56,7 +59,8 @@ class PostController extends Controller
     {
         $title = 'Edit Post';
         $post = Post::where('id', $id)->first();
-        return view('posts.edit', compact('title', 'post'));
+        $categories = Category::all();
+        return view('posts.edit', compact('title', 'post', 'categories'));
     }
 
     public function update(Request $request)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,14 +28,19 @@ class HomeController extends Controller
             {
                 $query->where('tag', $request->tag);
             }
+            elseif(!empty($request->category_id))
+            {
+                $query->where('category_id', $request->category_id);
+            }
         }
         
         $title = 'Posts';
-        $posts = $query->with('users')->orderBy('created_at', 'desc')->paginate(10);
+        $posts = $query->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(10);
         $latestPost = Post::orderBy('id', 'desc')->latest()->take(5)->get();
+        $category = Category::all();
         $tags = Post::select('tag')->distinct()->get();
         $queryData = $request->query();
-        return view('blog', compact('title', 'posts', 'latestPost', 'tags', 'queryData'));
+        return view('blog', compact('title', 'posts', 'latestPost', 'category', 'tags', 'queryData'));
     }
 
     public function show($id)

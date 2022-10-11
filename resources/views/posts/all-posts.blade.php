@@ -6,8 +6,8 @@
 <div class="all-posts">
     <div class="container">
         <div class="row d-flex justify-content-center">
-          <div class="col-md-9">
-          <div class="card mt-5">
+          <div class="col-md-10">
+          <div class="card my-5">
             <div class="card-header h4 text-center">
               Your posts
             </div>
@@ -26,6 +26,7 @@
                     <tr>
                       <th>No.</th>
                       <th>Title</th>
+                      <th>Category</th>
                       <th>Tag</th>
                       <th>Created at</th>
                       <th style="width: 20%">Action</th>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>{{ $posts->firstItem() + $key }}</td>
                                 <td>{{ $item->title }}</td>
+                                <td>{{ $item->categories->name }}</td>
                                 <td>{{ $item->tag }}</td>
                                 <td>{{ $item->created_at->diffForHumans() }}</td>
                                 <td>

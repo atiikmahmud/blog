@@ -25,7 +25,10 @@
                             {{ $post->body }}
                         </div>
                         <div class="post-tags mt-3">
-                            <small><strong>Tags: </strong>{{ $post->tag }}</small>
+                            <small><strong>Category: </strong>{{ $post->categories->name }},<strong>Tag: </strong>{{ $post->tag }}</small>
+                        </div>
+                        <div class="post-date-time">
+                            <small><strong>Date: </strong>{{ $post->created_at->toDayDateTimeString() }}</small>
                         </div>
                         <hr />
                         <div class="comments-section">

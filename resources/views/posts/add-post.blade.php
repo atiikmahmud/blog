@@ -8,7 +8,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-6">
             <div class="add-post-area">
-              <div class="card mt-5">
+              <div class="card my-5">
                 <div class="card-header h4">
                   Create Post
                 </div>
@@ -41,12 +41,21 @@
                     <form action="{{ route('store.post') }}" method="POST">
                         @csrf
                       <div class="form-group mb-3">
-                        <label>Post title</label>
+                        <label>Title</label>
                         <input type="text" class='form-control mt-1' id="title" name="title" required />                        
                       </div>
                       <div class="form-group mb-3">
-                        <label>Post body</label>
-                        <textarea id="body" name="body" cols="30" rows="5" class="form-control" required></textarea>                     
+                        <label>Category</label>
+                        <select class="form-select mt-1" aria-label="category" name="category" required>
+                          <option value="1" selected>Select category</option>
+                          @foreach($categories as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                          @endforeach
+                        </select>                       
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Post Details</label>
+                        <textarea id="body" name="body" cols="30" rows="7" class="form-control" required></textarea>                     
                       </div>
                       <div class="form-group mb-3">
                         <label>Post tag</label>

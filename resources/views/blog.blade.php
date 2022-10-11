@@ -28,7 +28,7 @@
                                                     style="margin-left: -165px;">
                                                     {{ $post->created_at->diffForHumans() }}
                                                 </div>
-                                                <div class="post-title h3">
+                                                <div class="post-title h5">
                                                     {{ $post->title }} <span style="font-size: 18px;"><small>by
                                                             {{ $post->users->name }}</small></span>
                                                 </div>
@@ -38,7 +38,7 @@
                                                     </p>
                                                 </div>
                                                 <div class="post-tag mb-2">
-                                                    <small><strong>Tags: </strong>{{ $post->tag }}</small>
+                                                    <small><strong>Category: </strong>{{ $post->categories->name }},  <strong>Tag: </strong>{{ $post->tag }}</small>
                                                 </div>
                                                 <div class="read-more-button">
                                                     <a href="{{ route('single.post', $post->id) }}"
@@ -62,14 +62,10 @@
                                 Categories
                             </div>
                             <ul class="list-group">
-                                <li class="list-group-item"><i class="fas fa-chevron-right"></i> <a href="#"
-                                        style="text-decoration: none; color:black;">Hair Care</a></li>
-
-                                <li class="list-group-item"><i class="fas fa-chevron-right"></i> <a href="#"
-                                        style="text-decoration: none; color:black;">Skin Care</a></li>
-
-                                <li class="list-group-item"><i class="fas fa-chevron-right"></i> <a href="#"
-                                        style="text-decoration: none; color:black;">Hot News</a></li>
+                              @foreach($category as $item)  
+                                <li class="list-group-item"><i class="fas fa-chevron-right"></i> <a href="{{ route('blog', ['category_id' => $item->id]) }}"
+                                        style="text-decoration: none; color:black;">{{ $item->name }}</a></li>
+                              @endforeach
                             </ul>
                         </div>
 

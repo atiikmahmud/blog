@@ -8,7 +8,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-6">
             <div class="add-post-area">
-              <div class="card mt-5">
+              <div class="card my-5">
                 <div class="card-header h5 d-flex justify-content-between">
                     <div class="post-title">
                         Edit Post
@@ -52,14 +52,27 @@
                         <label>Post title</label>
                         <input type="text" class='form-control mt-1' id="title" name="title" value="{{ $post->title }}" required />                        
                       </div>
+
+                      <div class="form-group mb-3">
+                        <label>Category</label>
+                        <select class="form-select mt-1" aria-label="category" name="category" value="{{ $post->category_id }}" required>
+                          <option value="1" selected>Select category</option>
+                          @foreach($categories as $item)
+                            <option value="{{ $item->id }}" @if($item->id === $post->category_id) selected @endif >{{ $item->name }}</option>
+                          @endforeach
+                        </select>                       
+                      </div>
+
                       <div class="form-group mb-3">
                         <label>Post body</label>
-                        <textarea id="body" name="body" cols="30" rows="5" class="form-control" required>{{ $post->body }}</textarea>                     
+                        <textarea id="body" name="body" cols="30" rows="7" class="form-control" required>{{ $post->body }}</textarea>                     
                       </div>
+
                       <div class="form-group mb-3">
                         <label>Post tag</label>
                         <input type="text" class='form-control mt-1' id="tag" name="tag" value="{{ $post->tag }}" required/>               
                       </div>
+
                       <div class="form-group d-flex justify-content-end">
                         <button type='submit' class='btn btn-primary'>Update</button>                       
                       </div>  
