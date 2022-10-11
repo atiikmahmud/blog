@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,7 +49,9 @@ class HomeController extends Controller
     {
         $title = 'Posts';
         $post = Post::with('users')->where('id', $id)->first();
-        $comments = Comment::with('users')->where('post_id', $id)->get();
+        $comments = Comment::with('users')->with('reply')->where('post_id', $id)->get();
+        $reply = Reply::with('users')->where('post_id', $id)->get();
+        // dd($comments->toArray());
         return view('single-post', compact('title', 'post', 'comments'));
     }
 

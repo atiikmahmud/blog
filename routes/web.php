@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',                 [HomeController::class, 'index'])->name('home');
@@ -37,6 +38,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
     Route::delete('/post-delete/{id}',  [PostController::class, 'destroy'])->name('post.destroy');
 
     Route::post('/comments',            [CommentController::class, 'store'])->name('comment.store');
+    Route::post('/reply-comments',      [CommentController::class, 'replyStore'])->name('reply.store');
 
 });
 

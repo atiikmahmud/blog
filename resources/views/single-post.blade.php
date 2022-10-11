@@ -72,6 +72,50 @@
                                                                 {{ $item->text }}
                                                             </p>
                                                         </div>
+                                                        {{-- <div class="comments-reply">
+                                                            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ $item->id }}" aria-expanded="false" aria-controls="collapseExample{{ $item->id }}"><i class="fas fa-reply"></i> Reply</button>
+                                                            <div class="comment-reply-form"  style="padding-left: 50px; padding-right: 10px;">
+                                                                @if($item->reply)
+                                                                    <div class="row">
+                                                                        <div class="col-md-1 mt-2">
+                                                                            @if($item->users->profile_photo_path)
+                                                                            <img src="/storage/profile-photos/{{ basename( $item->users->profile_photo_path) }}" alt="" class="border rounded-circle" style="height: 40px; width: 40px; "/>
+                                                                            @else
+                                                                            <img src="{{ $item->users->profile_photo_url }}" alt="" class="border rounded-circle" style="height: 40px; width: 40px; "/>
+                                                                            @endif
+                                                                        </div>
+                                                                        <div class="col-md-11">
+                                                                            <div class="comment-text p-2 rounded mb-2" style="background-color: #f3f3f3; margin-left: 15px; margin-right: 10px; ">
+                                                                                <p class="d-inline">
+                                                                                    <strong>{{ $item->users->name }}</strong><br>
+                                                                                    {{ $item->reply->reply }}
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                @endif
+
+                                                                <div class="comment-box collapse" id="collapseExample{{ $item->id }}" style="padding-left: 10px; padding-right: 10px;">
+                                    
+                                                                    @if ($errors->any())
+                                                                        @foreach ($errors->all() as $error)
+                                                                            <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+                                                                                {{ $error }}
+                                                                                <button type="button" class="btn btn-sm btn-close" style="padding: 8px" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                                            </div>
+                                                                        @endforeach
+                                                                    @endif
+                
+                                                                    <form action="{{ route('reply.store') }}" method="POST">
+                                                                        @csrf
+                                                                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                                                        <input type="hidden" name="comment_id" value="{{ $item->id }}">
+                                                                        <textarea name="reply" cols="20" rows="2" class='form-control' placeholder="comment reply.." required></textarea>
+                                                                        <button type="submit" class='btn btn-sm btn-primary mt-2'>Reply</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div> --}}
                                                     </div>
                                                 </div>
                                             </div>
