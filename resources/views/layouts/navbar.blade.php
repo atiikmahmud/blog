@@ -15,7 +15,7 @@
             <a class="nav-link @if($title == 'Home') active @endif" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link @if($title == 'Blog') active @endif" href="/blog">Blog</a>
+            <a class="nav-link @if($title == 'Posts') active @endif" href="/blog">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link @if($title == 'About Us') active @endif" href="/about-us">About Us</a>

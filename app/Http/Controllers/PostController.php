@@ -89,4 +89,5 @@ class PostController extends Controller
         $post->delete();
         return redirect()->back()->with('success', 'Post successfully deleted !!');
     }
+
 }

@@ -14,11 +14,27 @@ class HomeController extends Controller
         return view('home', compact('title'));
     }
 
-    public function blog()
+    public function blog(Request $request)
     {
+        $query = Post::query();
+        if(count($request->all()) > 0)
+        {
+            if(!empty($request->search))
+            {
+                $query->where('title','like','%'.$request->search.'%')->orWhere('tag','like','%'.$request->search.'%');
+            }
+            elseif(!empty($request->tag))
+            {
+                $query->where('tag', $request->tag);
+            }
+        }
+        
         $title = 'Posts';
-        $posts = Post::with('users')->get();
-        return view('blog', compact('title', 'posts'));
+        $posts = $query->with('users')->orderBy('created_at', 'desc')->paginate(10);
+        $latestPost = Post::orderBy('id', 'desc')->latest()->take(5)->get();
+        $tags = Post::select('tag')->distinct()->get();
+        $queryData = $request->query();
+        return view('blog', compact('title', 'posts', 'latestPost', 'tags', 'queryData'));
     }
 
     public function show($id)
