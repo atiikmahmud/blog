@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,8 +47,9 @@ class HomeController extends Controller
     public function show($id)
     {
         $title = 'Posts';
-        $post = Post::where('id', $id)->first();
-        return view('single-post', compact('title', 'post'));
+        $post = Post::with('users')->where('id', $id)->first();
+        $comments = Comment::with('users')->where('post_id', $id)->get();
+        return view('single-post', compact('title', 'post', 'comments'));
     }
 
     public function aboutUs()

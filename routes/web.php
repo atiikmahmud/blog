@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -34,6 +35,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' 
     Route::get('/edit-post/{id}',       [PostController::class, 'edit'])->name('edit.post');
     Route::post('/edit-post',           [PostController::class, 'update'])->name('update.post');
     Route::delete('/post-delete/{id}',  [PostController::class, 'destroy'])->name('post.destroy');
+
+    Route::post('/comments',            [CommentController::class, 'store'])->name('comment.store');
 
 });
 

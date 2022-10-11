@@ -28,7 +28,7 @@
                       <th>Title</th>
                       <th>Category</th>
                       <th>Tag</th>
-                      <th>Created at</th>
+                      <th style="width: 15%">Created at</th>
                       <th style="width: 20%">Action</th>
                     </tr>
                   </thead>
@@ -40,7 +40,7 @@
                                 <td>{{ $item->title }}</td>
                                 <td>{{ $item->categories->name }}</td>
                                 <td>{{ $item->tag }}</td>
-                                <td>{{ $item->created_at->diffForHumans() }}</td>
+                                <td>{{ $item->created_at->toFormattedDateString() }}</td>
                                 <td>
                                     <a href="{{ route('show.post', $item->id) }}" class='btn btn-sm btn-primary' style=" marginright: 5px; ">View</a>
                                     <form action="{{ route('post.destroy', $item->id) }}" method="POST" class="d-inline">

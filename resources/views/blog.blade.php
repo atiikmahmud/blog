@@ -26,7 +26,7 @@
                                             <div class="text-area-section m-3 p-2">
                                                 <div class="post-date-time p-2 bg-dark text-light d-inline"
                                                     style="margin-left: -165px;">
-                                                    {{ $post->created_at->diffForHumans() }}
+                                                    {{ $post->created_at->toFormattedDateString() }}
                                                 </div>
                                                 <div class="post-title h5">
                                                     {{ $post->title }} <span style="font-size: 18px;"><small>by
