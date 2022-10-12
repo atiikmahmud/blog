@@ -52,5 +52,8 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/add-user',       [AdminController::class, 'addUser'])->name('admin.add.user');
     Route::get('/admin/admin-users',    [AdminController::class, 'adminUsers'])->name('admin.admin.users');
     Route::get('/admin/add-admin-user', [AdminController::class, 'addAdminUser'])->name('add.admin.user');
+    Route::get('/admin/messages',       [ContactController::class, 'index'])->name('admin.messages');
+    Route::get('/admin/messages/{id}',  [ContactController::class, 'show'])->name('message.show');
+    Route::delete('/admin/message-delete/{id}', [ContactController::class, 'destroy'])->name('message.destroy');
 
 });

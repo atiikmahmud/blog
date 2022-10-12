@@ -10,7 +10,9 @@ class ContactController extends Controller
 {
     public function index()
     {
-        //
+        $title = 'Messages';
+        $messages = Contact::orderBy('id', 'desc')->get();
+        return view('admin.messages', compact('title', 'messages'));
     }
 
     public function store(Request $request)
@@ -34,5 +36,23 @@ class ContactController extends Controller
             Log::error($e->getMessage());
             return redirect()->back()->with('error', 'Message not send !!');
         }
+    }
+
+    public function show($id)
+    {
+        $message = Contact::find($id);
+        $message->status = 0;
+        $message->save();
+
+        $title = 'Message';
+        $showmsg = Contact::where('id', $id)->first();
+        return view('admin.single-message', compact('title', 'showmsg'));
+    }
+
+    public function destroy($id)
+    {     
+        $message = Contact::find($id);
+        $message->delete();
+        return redirect()->back()->with('success', 'Message successfully deleted !!');
     }
 }
