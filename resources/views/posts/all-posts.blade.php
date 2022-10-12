@@ -54,7 +54,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="4" class="text-center">There are no data.</td>
+                            <td colspan="6" class="text-center">There are no data.</td>
                         </tr>
                     @endif
                   </tbody>
