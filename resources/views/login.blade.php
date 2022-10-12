@@ -24,6 +24,15 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
+
+                            @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+                                        {{ $error }}
+                                        <button type="button" class="btn btn-sm btn-close" style="padding: 8px" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @endforeach
+                            @endif
                             
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf

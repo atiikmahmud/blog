@@ -20,6 +20,6 @@ class Comment extends Model
 
     public function reply()
     {
-        return $this->belongsTo(Reply::class,'id','comment_id');
+        return $this->hasMany(Reply::class);
     }
 }

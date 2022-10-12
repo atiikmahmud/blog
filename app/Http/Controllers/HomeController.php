@@ -49,9 +49,8 @@ class HomeController extends Controller
     {
         $title = 'Posts';
         $post = Post::with('users')->where('id', $id)->first();
-        $comments = Comment::with('users')->with('reply')->where('post_id', $id)->get();
-        $reply = Reply::with('users')->where('post_id', $id)->get();
-        // dd($comments->toArray());
+        $comments = Comment::with('users')->with('reply.users')->where('post_id', $id)->get();
+        // dd($post->toArray());
         return view('single-post', compact('title', 'post', 'comments'));
     }
 

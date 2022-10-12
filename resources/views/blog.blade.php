@@ -29,7 +29,7 @@
                                                     {{ $post->created_at->toFormattedDateString() }}
                                                 </div>
                                                 <div class="post-title h5">
-                                                    {{ $post->title }} <span style="font-size: 18px;"><small>by
+                                                    {{ Str::limit($post->title, 45) }} <span style="font-size: 18px;"><small>by
                                                             {{ $post->users->name }}</small></span>
                                                 </div>
                                                 <div class="post-body">
