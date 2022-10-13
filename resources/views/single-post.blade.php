@@ -11,7 +11,7 @@
                 <div class="card mt-5 mb-5">
                     <div class="card-header h5 d-flex justify-content-between">
                         <div class="post-title">
-                            {{ $post->title }}
+                            {{ Str::limit($post->title, 75) }}
                         </div>
                         <div class="all-post">
                             <a href="{{ route('blog') }}" class="btn btn-sm btn-dark">Posts</a>
@@ -22,6 +22,7 @@
                             <img src="https://us.123rf.com/450wm/creativepriyanka/creativepriyanka1905/creativepriyanka190500599/124082851-demo-icon.jpg?ver=6" alt="" class='d-block mx-auto' style="height: 300px; width: 300px;" />
                         </div>
                         <div class="post-body py-3">
+                            <h5>{{ $post->title }}</h5>
                             {{ $post->body }}
                         </div>
 

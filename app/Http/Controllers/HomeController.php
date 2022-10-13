@@ -19,7 +19,7 @@ class HomeController extends Controller
 
     public function blog(Request $request)
     {
-        $query = Post::query();
+        $query = Post::query()->where('status', 1);
         if(count($request->all()) > 0)
         {
             if(!empty($request->search))
@@ -37,10 +37,10 @@ class HomeController extends Controller
         }
         
         $title = 'Posts';
-        $posts = $query->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(10);
-        $latestPost = Post::orderBy('id', 'desc')->latest()->take(5)->get();
+        $posts = $query->where('status', 1)->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(10);
+        $latestPost = Post::where('status', 1)->orderBy('id', 'desc')->latest()->take(5)->get();
         $category = Category::all();
-        $tags = Post::select('tag')->distinct()->get();
+        $tags = Post::select('tag')->distinct()->where('status', 1)->get();
         $queryData = $request->query();
         return view('blog', compact('title', 'posts', 'latestPost', 'category', 'tags', 'queryData'));
     }
