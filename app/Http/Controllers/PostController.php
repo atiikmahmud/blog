@@ -79,6 +79,7 @@ class PostController extends Controller
             $post->body    = $request->body;
             $post->tag     = $request->tag;
             $post->user_id = Auth()->user()->id;
+            $post->category_id = $request->category;
             $post->save();
 
             return redirect()->back()->with('success', 'Post updated successfully !!');

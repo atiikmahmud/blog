@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {    
@@ -69,6 +71,46 @@ class AdminController extends Controller
     {
       $title = 'Add Post';
       return view('admin.add-post', compact('title'));
+    }
+
+    public function editPost($id)
+    {
+      $title = 'Edit Post';
+      $post = Post::where('id', $id)->first();
+      $categories = Category::all();
+      return view('admin.edit-post', compact('title', 'post', 'categories'));
+    }
+
+    public function updatePost(Request $request)
+    {
+      $request->validate([
+        'title'    => 'required',
+        'body'   => 'required',
+        'tag' => 'required'
+      ]);
+
+      try{
+          $post = Post::find($request->id);
+          $post->title   = $request->title;
+          $post->body    = $request->body;
+          $post->tag     = $request->tag;
+          $post->user_id = Auth()->user()->id;
+          $post->category_id = $request->category;
+          $post->save();
+
+          return redirect()->back()->with('success', 'Post updated successfully !!');
+      }
+      catch(\Exception $e){
+          Log::error($e->getMessage());
+          return redirect()->back()->with('error', 'Post not update !!');
+      }
+    }
+
+    public function postDestroy($id)
+    {     
+        $post = Post::find($id);
+        $post->delete();
+        return redirect()->back()->with('success', 'Post successfully deleted !!');
     }
 
     public function comments()

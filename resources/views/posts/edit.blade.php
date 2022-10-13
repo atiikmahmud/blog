@@ -3,7 +3,7 @@
 
 @section('content')
 
-<div class="add-post">
+<div class="edit-post">
     <div class="container">
         <div class="row d-flex justify-content-center">
           <div class="col-md-6">

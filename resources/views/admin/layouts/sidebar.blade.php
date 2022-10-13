@@ -31,7 +31,7 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item  @if($title == 'Posts') active @endif">
         <a class="nav-link" href="{{ route('admin.posts') }}">
-            <i class="fas fa-file-powerpoint"></i>
+            <i class="fas fa-poll-h"></i>
             <span>Posts</span></a>
     </li>
 

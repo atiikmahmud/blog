@@ -45,7 +45,7 @@
                                 @else
                                     <a href="{{ route('admin.post.approval', $post->id) }}" class="btn btn-sm btn-success">Approved</a>
                                 @endif
-                                <a href="#" class="btn btn-sm btn-info">Edit</a>
+                                <a href="{{ route('admin.edit.post', $post->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
                                 <a href="{{ route('admin.posts') }}" class="btn btn-sm btn-dark">Back</a>
                             </div>
                         </div>
