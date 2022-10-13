@@ -49,6 +49,13 @@ class ContactController extends Controller
         return view('admin.single-message', compact('title', 'showmsg'));
     }
 
+    public function unreadMsg()
+    {
+        $title = 'Messages';
+        $messages = Contact::where('status', 1)->get();
+        return view('admin.unread-messages', compact('title', 'messages'));
+    }
+
     public function destroy($id)
     {     
         $message = Contact::find($id);

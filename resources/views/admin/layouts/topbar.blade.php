@@ -73,7 +73,7 @@
                     </div>
                 </a>
                 @endforeach
-                <a class="dropdown-item text-center small text-gray-500" href="{{ route('admin.posts') }}">Show All Posts</a>
+                <a class="dropdown-item text-center small text-gray-500" href="{{ route('admin.approval.posts') }}">Show All Posts</a>
             </div>
         </li>
 
@@ -103,7 +103,7 @@
                         </div>
                     </a>
                 @endforeach
-                <a class="dropdown-item text-center small text-gray-500" href="{{ route('admin.messages') }}">Read More Messages</a>
+                <a class="dropdown-item text-center small text-gray-500" href="{{ route('admin.unread.message') }}">Read More Messages</a>
             </div>
         </li>
 

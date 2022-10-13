@@ -46,6 +46,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/dashboard',      [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/profile',        [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/admin/posts',          [AdminController::class, 'posts'])->name('admin.posts');
+    Route::get('/admin/approval-posts', [AdminController::class, 'approvalPost'])->name('admin.approval.posts');
     Route::get('/admin/add-post',       [AdminController::class, 'addPost'])->name('admin.add.post');
     Route::get('/admin/comments',       [AdminController::class, 'comments'])->name('admin.comments');
     Route::get('/admin/users',          [AdminController::class, 'users'])->name('admin.users');
@@ -53,6 +54,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/admin-users',    [AdminController::class, 'adminUsers'])->name('admin.admin.users');
     Route::get('/admin/add-admin-user', [AdminController::class, 'addAdminUser'])->name('add.admin.user');
     Route::get('/admin/messages',       [ContactController::class, 'index'])->name('admin.messages');
+    Route::get('/admin/unread-messages',[ContactController::class, 'unreadMsg'])->name('admin.unread.message');
     Route::get('/admin/messages/{id}',  [ContactController::class, 'show'])->name('message.show');
     Route::delete('/admin/message-delete/{id}', [ContactController::class, 'destroy'])->name('message.destroy');
     Route::get('/admin/posts/{id}',     [AdminController::class, 'showPost'])->name('admin.show.post');

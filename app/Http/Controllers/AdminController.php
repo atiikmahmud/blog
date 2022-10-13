@@ -28,6 +28,13 @@ class AdminController extends Controller
       return view('admin.posts', compact('title', 'posts'));
     }
 
+    public function approvalPost()
+    {
+      $title = 'Posts';
+      $posts = Post::where('status',0)->with('categories')->with('users')->get();
+      return view('admin.approval-posts', compact('title', 'posts'));
+    }
+
     public function showPost($id)
     {
         $title = 'Posts';
