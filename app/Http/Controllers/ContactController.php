@@ -44,7 +44,7 @@ class ContactController extends Controller
         $message->status = 0;
         $message->save();
 
-        $title = 'Message';
+        $title = 'Messages';
         $showmsg = Contact::where('id', $id)->first();
         return view('admin.single-message', compact('title', 'showmsg'));
     }

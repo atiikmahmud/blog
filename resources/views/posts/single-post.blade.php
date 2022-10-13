@@ -14,6 +14,11 @@
                             {{ $post->title }}
                         </div>
                         <div class="all-post">
+                            @if($post->status == 0)
+                                <a class="btn btn-sm btn-warning">Pending</a>
+                            @else
+                                <a class="btn btn-sm btn-success">Approved</a>
+                            @endif
                             <a href="{{ route('list.post') }}" class="btn btn-sm btn-dark">Post List</a>
                         </div>
                     </div>

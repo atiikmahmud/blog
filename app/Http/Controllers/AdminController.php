@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Contact;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -22,7 +24,33 @@ class AdminController extends Controller
     public function posts()
     {
       $title = 'Posts';
-      return view('admin.posts', compact('title'));
+      $posts = Post::with('categories')->with('users')->get();
+      return view('admin.posts', compact('title', 'posts'));
+    }
+
+    public function showPost($id)
+    {
+        $title = 'Posts';
+        $post = Post::where('id', $id)->first();
+        $comments = Comment::with('users')->with('reply')->where('post_id', $id)->get();
+        return view('admin.single-post', compact('title', 'post', 'comments'));
+    }
+
+    public function postApproval($id)
+    {
+      $post = Post::find($id);
+      if($post->status == 0)
+      {
+        $post->status = 1;
+        $post->save();      
+        return redirect()->back()->with('success', 'Post approved!');
+      }
+      else
+      {
+        $post->status = 0;
+        $post->save();      
+        return redirect()->back()->with('fail', 'Post pending!'); 
+      }
     }
 
     public function addPost()

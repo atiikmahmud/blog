@@ -29,6 +29,7 @@
                   <th>Category</th>
                   <th>Tag</th>
                   <th style="width: 15%">Created at</th>
+                  <th>Status</th>
                   <th style="width: 20%">Action</th>
                 </tr>
               </thead>
@@ -41,6 +42,13 @@
                             <td>{{ $item->categories->name }}</td>
                             <td>{{ $item->tag }}</td>
                             <td>{{ $item->created_at->toFormattedDateString() }}</td>
+                            <td>
+                              @if($item->status == 0)
+                              <span class="badge text-bg-warning">Pending</span>
+                              @else
+                              <span class="badge text-bg-success">Approved</span>
+                              @endif
+                            </td>
                             <td>
                                 <a href="{{ route('show.post', $item->id) }}" class='btn btn-sm btn-primary' style=" marginright: 5px; ">View</a>
                                 <form action="{{ route('post.destroy', $item->id) }}" method="POST" class="d-inline">

@@ -21,9 +21,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @endif
-
-            
+            @endif            
 
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -57,7 +55,7 @@
                                 @endif
                                 </a></td>
                             <td>{{ $item->email }}</td>
-                            <td>{{ $item->message }}</td>
+                            <td>{{ Str::limit($item->message, 55) }}</td>
                             <td>{{ $item->created_at->toFormattedDateString() }}</td>
                             <td>
                                 <form action="{{ route('message.destroy', $item->id) }}" method="POST" class="d-inline">

@@ -55,5 +55,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/messages',       [ContactController::class, 'index'])->name('admin.messages');
     Route::get('/admin/messages/{id}',  [ContactController::class, 'show'])->name('message.show');
     Route::delete('/admin/message-delete/{id}', [ContactController::class, 'destroy'])->name('message.destroy');
+    Route::get('/admin/posts/{id}',     [AdminController::class, 'showPost'])->name('admin.show.post');
+    Route::get('/admin/post-approval/{id}',  [AdminController::class, 'postApproval'])->name('admin.post.approval');
 
 });
