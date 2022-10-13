@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/posts',          [AdminController::class, 'posts'])->name('admin.posts');
     Route::get('/admin/approval-posts', [AdminController::class, 'approvalPost'])->name('admin.approval.posts');
     Route::get('/admin/add-post',       [AdminController::class, 'addPost'])->name('admin.add.post');
+    Route::post('/admin/add-post',      [AdminController::class, 'addNewPost'])->name('admin.new.post');
     Route::get('/admin/edit-post/{id}', [AdminController::class, 'editPost'])->name('admin.edit.post');
     Route::post('/admin/update-post',   [AdminController::class, 'updatePost'])->name('admin.update.post');
     Route::delete('/admin/post-delete/{id}',[AdminController::class, 'postDestroy'])->name('admin.delete.post');

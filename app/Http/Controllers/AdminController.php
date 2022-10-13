@@ -70,7 +70,33 @@ class AdminController extends Controller
     public function addPost()
     {
       $title = 'Add Post';
-      return view('admin.add-post', compact('title'));
+      $categories = Category::all();
+      return view('admin.add-post', compact('title', 'categories'));
+    }
+
+    public function addNewPost(Request $request)
+    {
+      $request->validate([
+          'title'    => 'required',
+          'body'   => 'required',
+          'tag' => 'required'
+      ]);
+
+      try{
+          $post = new Post;
+          $post->title   = $request->title;
+          $post->body    = $request->body;
+          $post->tag     = $request->tag;
+          $post->user_id = Auth()->user()->id;
+          $post->category_id = $request->category;
+          $post->save();
+
+          return redirect()->back()->with('success', 'Post created successfully !!');
+      }
+      catch(\Exception $e){
+          Log::error($e->getMessage());
+          return redirect()->back()->with('error', 'Post not created !!');
+      }
     }
 
     public function editPost($id)

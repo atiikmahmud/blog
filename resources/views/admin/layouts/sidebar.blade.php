@@ -38,7 +38,7 @@
     <li class="nav-item  @if($title == 'Add Post') active @endif">
         <a class="nav-link" href="{{ route('admin.add.post') }}">
             <i class="fas fa-file-signature"></i>
-            <span>Add Posts</span></a>
+            <span>Add Post</span></a>
     </li>
 
     <li class="nav-item  @if($title == 'Comments') active @endif">
@@ -76,17 +76,6 @@
             <span>Add User</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Admin User Management
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    
-    <!-- Nav Item - Charts -->
     <li class="nav-item  @if($title == 'Admin Users') active @endif">
         <a class="nav-link" href="{{ route('admin.admin.users') }}">
             <i class="fas fa-user-shield"></i>
