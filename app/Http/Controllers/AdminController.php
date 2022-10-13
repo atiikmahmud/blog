@@ -5,14 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {    
     public function index()
     {
-      $title = 'Dashboard';  
-      return view('admin.dashboard', compact('title'));
+      $title = 'Dashboard';
+      $users = User::where('status', 1)->count();
+      $posts = Post::where('status',1)->count();
+      $approvalPost = Post::where('status', 0)->count();
+      $unreadMessage = Contact::where('status', 1)->count(); 
+      return view('admin.dashboard', compact('title', 'users', 'posts', 'approvalPost', 'unreadMessage'));
     }
 
     public function profile()
