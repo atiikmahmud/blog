@@ -62,7 +62,7 @@ class CommentController extends Controller
         }
     }
 
-    public function Destroy($id)
+    public function destroy($id)
     {     
         $comment = Comment::find($id);
         $comment->delete();

@@ -61,7 +61,7 @@
                             <td>{{ Str::limit($comment->text, 30) }}</td>
                             <td>{{ $comment->created_at->toFormattedDateString() }}</td>                            
                             <td>
-                                <form action="{{ route('message.destroy', $comment->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('admin.comment.delete', $comment->id) }}" method="POST" class="d-inline">
                                     <a href="{{ route('admin.show.post', $comment->posts->id) }}" class="btn btn-sm btn-dark">View</a>
                                     @csrf
                                     @method('DELETE')
