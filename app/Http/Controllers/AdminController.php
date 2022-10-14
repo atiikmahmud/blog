@@ -139,12 +139,6 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Post successfully deleted !!');
     }
 
-    public function comments()
-    {
-      $title = 'Comments';
-      return view('admin.comments', compact('title'));
-    }
-
     public function users()
     {
       $title = 'Users';

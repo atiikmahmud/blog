@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Log;
 
 class CommentController extends Controller
 {
+    public function index()
+    {
+      $title = 'Comments';
+      return view('admin.comments', compact('title'));
+    }
+    
     public function store(Request $request)
     {
         $request->validate([
