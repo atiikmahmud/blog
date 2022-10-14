@@ -34,7 +34,7 @@
                                                 </div>
                                                 <div class="post-body">
                                                     <p>
-                                                        {{ Str::limit($post->body, 100) }}
+                                                        {!! html_entity_decode(Str::limit($post->body, 100)) !!}
                                                     </p>
                                                 </div>
                                                 <div class="post-tag mb-2">

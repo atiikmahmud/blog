@@ -38,7 +38,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('store.post') }}" method="POST">
+                    <form action="{{ route('store.post') }}" method="POST" novalidate>
                         @csrf
                       <div class="form-group mb-3">
                         <label>Title</label>
@@ -55,7 +55,7 @@
                       </div>
                       <div class="form-group mb-3">
                         <label>Post Details</label>
-                        <textarea id="body" name="body" cols="30" rows="7" class="form-control" required></textarea>                     
+                        <textarea id="body" name="body" cols="30" rows="100" class="form-control" required></textarea>                     
                       </div>
                       <div class="form-group mb-3">
                         <label>Post tag</label>

@@ -43,7 +43,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('update.post') }}" method="POST">
+                    <form action="{{ route('update.post') }}" method="POST" novalidate>
                         @csrf
                       <div class="form-group mb-3">
                           

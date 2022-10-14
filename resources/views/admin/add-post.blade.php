@@ -50,7 +50,7 @@
 
                     <div class="card-body">
                         <div class="post-form-area">        
-                            <form action="{{ route('admin.new.post') }}" method="POST">
+                            <form action="{{ route('admin.new.post') }}" method="POST" novalidate>
                                 @csrf
                                 <div class="form-group mb-3">
             

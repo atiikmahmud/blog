@@ -46,7 +46,6 @@
                                     <a href="{{ route('admin.post.approval', $post->id) }}" class="btn btn-sm btn-success">Approved</a>
                                 @endif
                                 <a href="{{ route('admin.edit.post', $post->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
-                                <a href="{{ route('admin.posts') }}" class="btn btn-sm btn-dark">Back</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -55,7 +54,7 @@
                             </div>
                             <div class="post-body py-3">
                                 <h5>{{ $post->title }}</h5>
-                                {{ $post->body }}
+                                {!! html_entity_decode($post->body) !!}
                             </div>
     
                             <div class="post-info d-flex justify-content-between">

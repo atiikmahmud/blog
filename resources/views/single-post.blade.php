@@ -23,7 +23,7 @@
                         </div>
                         <div class="post-body py-3">
                             <h5>{{ $post->title }}</h5>
-                            {{ $post->body }}
+                            {!! html_entity_decode($post->body) !!}
                         </div>
 
                         <div class="post-info d-flex justify-content-between">
