@@ -12,7 +12,8 @@ class CommentController extends Controller
     public function index()
     {
       $title = 'Comments';
-      return view('admin.comments', compact('title'));
+      $comments = Comment::with('users')->with('posts')->get();
+      return view('admin.comments', compact('title', 'comments'));
     }
     
     public function store(Request $request)
@@ -59,5 +60,12 @@ class CommentController extends Controller
             Log::error($e->getMessage());
             return redirect()->back();
         }
+    }
+
+    public function Destroy($id)
+    {     
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect()->back()->with('success', 'Comment successfully deleted !!');
     }
 }
