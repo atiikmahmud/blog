@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/dashboard',      [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/profile',        [AdminController::class, 'profile'])->name('admin.profile');
     Route::get('/admin/posts',          [AdminController::class, 'posts'])->name('admin.posts');
-    Route::get('/admin/approval-posts', [AdminController::class, 'approvalPost'])->name('admin.approval.posts');
+    Route::get('/admin/approval-post',  [AdminController::class, 'approvalPost'])->name('admin.approval.posts');
     Route::get('/admin/add-post',       [AdminController::class, 'addPost'])->name('admin.add.post');
     Route::post('/admin/add-post',      [AdminController::class, 'addNewPost'])->name('admin.new.post');
     Route::get('/admin/edit-post/{id}', [AdminController::class, 'editPost'])->name('admin.edit.post');
@@ -56,6 +56,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::delete('/admin/comment/delete/{id}', [CommentController::class, 'destroy'])->name('admin.comment.delete');
     Route::get('/admin/users',          [AdminController::class, 'users'])->name('admin.users');
     Route::get('/admin/user/post/{id}', [AdminController::class, 'userPost'])->name('admin.user.posts');
+    Route::get('/admin/approval-user/{id}', [AdminController::class, 'userApproval'])->name('admin.user.approval');
     Route::get('/admin/add-user',       [AdminController::class, 'addUser'])->name('admin.add.user');
     Route::get('/admin/admin-users',    [AdminController::class, 'adminUsers'])->name('admin.admin.users');
     Route::get('/admin/add-admin-user', [AdminController::class, 'addAdminUser'])->name('add.admin.user');

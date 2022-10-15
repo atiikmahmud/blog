@@ -155,6 +155,23 @@ class AdminController extends Controller
       return view('admin.user-posts', compact('title', 'posts'));
     }
 
+    public function userApproval($id)
+    {
+      $user = User::find($id);
+      if($user->status == 0)
+      {
+        $user->status = 1;
+        $user->save();      
+        return redirect()->back()->with('success', 'User activated!');
+      }
+      else
+      {
+        $user->status = 0;
+        $user->save();      
+        return redirect()->back()->with('fail', 'User disable!'); 
+      }
+    }
+
     public function addUser()
     {
       $title = 'Add User';
@@ -165,11 +182,5 @@ class AdminController extends Controller
     {
       $title = 'Admin Users';
       return view('admin.admin-users', compact('title'));
-    }
-
-    public function addAdminUser()
-    {
-      $title = 'Add Admin User';
-      return view('admin.add-admin-user', compact('title'));
     }
 }

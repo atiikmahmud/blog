@@ -72,6 +72,12 @@
                             <td align="center">{{ $user->created_at->toFormattedDateString() }}</td>                            
                             <td>
                                 <a href="{{ route('admin.user.posts', $user->id) }}" class="btn btn-sm btn-primary">Post List</a>
+
+                                @if($user->status == 0)
+                                    <a href="{{ route('admin.user.approval', $user->id) }}" class="btn btn-sm btn-warning">Disable</a>
+                                @else
+                                    <a href="{{ route('admin.user.approval', $user->id) }}" class="btn btn-sm btn-success" style="padding: 4px 12px;">Active</a>
+                                @endif
                                 
                                 <a href="{{ route('admin.edit.post', $user->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
 
