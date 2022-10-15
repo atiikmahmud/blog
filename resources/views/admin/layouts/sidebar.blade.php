@@ -70,23 +70,17 @@
             <span>Users</span></a>
     </li>
 
-    <li class="nav-item  @if($title == 'Add User') active @endif">
-        <a class="nav-link" href="{{ route('admin.add.user') }}">
-            <i class="fas fa-user-plus"></i>
-            <span>Add User</span></a>
-    </li>
-
     <li class="nav-item  @if($title == 'Admin Users') active @endif">
         <a class="nav-link" href="{{ route('admin.admin.users') }}">
             <i class="fas fa-user-shield"></i>
             <span>Admin Users</span></a>
     </li>
 
-    <li class="nav-item  @if($title == 'Add Admin User') active @endif">
-        <a class="nav-link" href="{{ route('add.admin.user') }}">
+    <li class="nav-item  @if($title == 'Add User') active @endif">
+        <a class="nav-link" href="{{ route('admin.add.user') }}">
             <i class="fas fa-user-plus"></i>
-            <span>Add Admin User</span></a>
-    </li>
+            <span>Add User</span></a>
+    </li>    
 
     <!-- Divider -->
     <hr class="sidebar-divider">

@@ -15,7 +15,7 @@ class AddColumnToPostsTable extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->unsignedBigInteger('category_id')->default(1)->after('user_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
