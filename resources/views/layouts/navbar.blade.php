@@ -42,7 +42,7 @@
                 <li><a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a></li>
                 <li><a class="dropdown-item" href="{{ route('add.post') }}">Add Post</a></li>
                 @if(Auth::user()->role == 1)
-                  <li><a class="dropdown-item" href="{{ route('admin.index') }}">Admin Panel</a></li>
+                  <li><a class="dropdown-item" href="{{ route('admin.index') }}" target="_blank">Admin Panel</a></li>
                 @endif
                 <li><a class="dropdown-item" href="{{ route('list.post') }}">Posts</a></li>
                 <li><hr class="dropdown-divider"></li>

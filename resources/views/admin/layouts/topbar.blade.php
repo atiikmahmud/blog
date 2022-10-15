@@ -129,13 +129,9 @@
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>
-                <a class="dropdown-item" href="{{ route('home') }}">
+                <a class="dropdown-item" href="{{ route('home') }}" target="_blank">
                     <i class="fas fa-th-large fa-sm fa-fw mr-2 text-gray-400"></i>
                     User Panel
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
                 </a>
                 <a class="dropdown-item" href="#">
                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
