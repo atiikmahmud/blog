@@ -142,7 +142,17 @@ class AdminController extends Controller
     public function users()
     {
       $title = 'Users';
-      return view('admin.users', compact('title'));
+      $users = User::where('role', 0)->get();
+      return view('admin.users', compact('title', 'users'));
+    }
+
+    public function userPost($id)
+    {
+      $user = User::where('id', $id)->first();
+      $name = $user->name;
+      $title = "$name's posts";
+      $posts = Post::with('categories')->where('user_id', $id)->orderBy('created_at', 'desc')->get();
+      return view('admin.user-posts', compact('title', 'posts'));
     }
 
     public function addUser()

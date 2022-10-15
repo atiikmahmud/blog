@@ -20,9 +20,6 @@
                             <div class="post-title">
                                 {{ Str::limit($post->title, 80) }}
                             </div>
-                        <div class="all-post">
-                            <a href="{{ route('admin.posts') }}" class="btn btn-sm btn-dark">Back</a>
-                        </div>
                     </div>
 
                     @if ($errors->any())

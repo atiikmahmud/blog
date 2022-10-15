@@ -7,7 +7,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Users</h1>
+        <h1 class="h3 mb-0 text-gray-800">{{ $title }}</h1>
     </div>
 
     <!-- Begin DataTales -->
@@ -36,46 +36,44 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Posts</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Tag</th>
+                            <th>Post by</th>
                             <th>Created at</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Posts</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Tag</th>
+                            <th>Post by</th>
                             <th>Created at</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($posts as $post)
                         <tr>
-                            <td align="center">
-                                @if($user->profile_photo_path)
-                                    <img class="img-profile rounded-circle"
-                                    src="/storage/profile-photos/{{basename($user->profile_photo_path)}}" width="40px" height="40px" />
-                                @else
-                                    <img class="img-profile rounded-circle"
-                                    src="{{ $user->profile_photo_url }}" alt="{{ Auth::user()->name }}" width="40px" height="40px" />
-                                @endif
-                            </td>
-                            <td>{{ $user->name }}</td>                            
-                            <td>{{ $user->email }}</td>                            
-                            <td align="center">{{App\Models\Post::where('user_id', $user->id)->count()}}</td>                           
-                            <td align="center">{{ $user->created_at->toFormattedDateString() }}</td>                            
+                            <td>{{ Str::limit($post->title, 40) }}</td>                            
+                            <td>{{ $post->categories->name }}</td>                            
+                            <td>{{ $post->tag }}</td>
+                            <td>{{ $post->users->name }}</td>                            
+                            <td>{{ $post->created_at->toFormattedDateString() }}</td>                            
                             <td>
-                                <a href="{{ route('admin.user.posts', $user->id) }}" class="btn btn-sm btn-primary">Post List</a>
-                                
-                                <a href="{{ route('admin.edit.post', $user->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
+                                @if($post->status == 0)
+                                    <a href="{{ route('admin.post.approval', $post->id) }}" class="btn btn-sm btn-warning" style="padding: 4px 14px;">Pending</a>
+                                @else
+                                    <a href="{{ route('admin.post.approval', $post->id) }}" class="btn btn-sm btn-success">Approved</a>
+                                @endif
 
-                                <form action="{{ route('admin.delete.post', $user->id) }}" method="POST" class="d-inline">
+                                <a href="{{ route('admin.show.post', $post->id) }}" class="btn btn-sm btn-primary">View</a>
+                                
+                                <a href="{{ route('admin.edit.post', $post->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
+
+                                <form action="{{ route('admin.delete.post', $post->id) }}" method="POST" class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('Are you sure, delete this post?')" class="btn btn-sm btn-danger">Delete</button>

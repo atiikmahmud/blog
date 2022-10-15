@@ -25,7 +25,7 @@ Route::fallback(function ()
 Route::post('/contacts',                [ContactController::class, 'store'])->name('contact.post');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' ])->group(function () {
-    Route::get('/dashboard',            [UserController::class, 'index'])->name('dashboard');
+    // Route::get('/dashboard',            [UserController::class, 'index'])->name('dashboard');
     Route::get('/profile',              [UserController::class, 'profile'])->name('user.profile');
     
     Route::get('/add-post',             [PostController::class, 'addPost'])->name('add.post');
@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/comments',       [CommentController::class, 'index'])->name('admin.comments');
     Route::delete('/admin/comment/delete/{id}', [CommentController::class, 'destroy'])->name('admin.comment.delete');
     Route::get('/admin/users',          [AdminController::class, 'users'])->name('admin.users');
+    Route::get('/admin/user/post/{id}', [AdminController::class, 'userPost'])->name('admin.user.posts');
     Route::get('/admin/add-user',       [AdminController::class, 'addUser'])->name('admin.add.user');
     Route::get('/admin/admin-users',    [AdminController::class, 'adminUsers'])->name('admin.admin.users');
     Route::get('/admin/add-admin-user', [AdminController::class, 'addAdminUser'])->name('add.admin.user');
