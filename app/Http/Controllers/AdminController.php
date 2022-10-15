@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Contact;
 use App\Models\Post;
+use App\Models\Reply;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -181,6 +182,24 @@ class AdminController extends Controller
     public function adminUsers()
     {
       $title = 'Admin Users';
-      return view('admin.admin-users', compact('title'));
+      $users = User::where('role', 1)->get();
+      return view('admin.admin-users', compact('title', 'users'));
+    }
+
+    public function deleteUser($id)
+    {
+      $reply = Reply::where('user_id', $id);
+      $reply->delete();
+
+      $comments = Comment::where('user_id', $id);
+      $comments->delete();
+
+      $posts = Post::where('user_id', $id);
+      $posts->delete();
+
+      $user = User::find($id);
+      $user->delete();
+
+      return redirect()->back()->with('success', 'User successfully deleted !!');
     }
 }

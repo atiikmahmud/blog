@@ -13,6 +13,12 @@
 
     <!-- CKEditor CDN -->
     <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+
+    <style>
+      .ck-editor__editable{
+        min-height: 185px;
+      }
+    </style>
     
   </head>
   <body>

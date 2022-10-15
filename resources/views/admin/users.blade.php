@@ -81,11 +81,8 @@
                                 
                                 <a href="{{ route('admin.edit.post', $user->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
 
-                                <form action="{{ route('admin.delete.post', $user->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure, delete this post?')" class="btn btn-sm btn-danger">Delete</button>
-                                </form>
+                                <a href="{{ route('admin.delete.user', $user->id) }}" onclick="return confirm('Are you sure, delete this user?')" class="btn btn-sm btn-danger">Delete</a>
+
                             </td>                            
                         </tr>
                         @endforeach
