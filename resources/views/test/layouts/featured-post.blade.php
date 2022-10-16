@@ -1,21 +1,25 @@
 <div class="container-fluid pt-5 mb-3">
     <div class="container">
         <div class="section-title">
-            <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
+            <h4 class="m-0 text-uppercase font-weight-bold">Featured Posts</h4>
         </div>
         <div class="owl-carousel news-carousel carousel-item-4 position-relative">
+            
+            @foreach($featurePosts as $posts)
             <div class="position-relative overflow-hidden" style="height: 300px;">
                 <img class="img-fluid h-100" src="{{ asset('assets2/img/news-700x435-1.jpg') }}" style="object-fit: cover;">
                 <div class="overlay">
                     <div class="mb-2">
                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                            href="">Business</a>
-                        <a class="text-white" href=""><small>Jan 01, 2045</small></a>
+                            href="">{{ $posts->categories->name }}</a>
+                        <a class="text-white" href=""><small>{{ $posts->created_at->toFormattedDateString() }}</small></a>
                     </div>
-                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
+                    <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{ Str::limit($posts->title, 45) }}</a>
                 </div>
             </div>
-            <div class="position-relative overflow-hidden" style="height: 300px;">
+            @endforeach
+
+            {{-- <div class="position-relative overflow-hidden" style="height: 300px;">
                 <img class="img-fluid h-100" src="{{ asset('assets2/img/news-700x435-2.jpg') }}" style="object-fit: cover;">
                 <div class="overlay">
                     <div class="mb-2">
@@ -58,7 +62,7 @@
                     </div>
                     <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">Lorem ipsum dolor sit amet elit...</a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>

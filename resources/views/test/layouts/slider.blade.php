@@ -54,7 +54,7 @@
                                     href="">{{ $posts->categories->name }}</a>
                                 <a class="text-white" href=""><small>{{ $posts->created_at->toFormattedDateString() }}</small></a>
                             </div>
-                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{ Str::limit($posts->title, 45) }}</a>
+                            <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="">{{ Str::limit($posts->title, 40) }}</a>
                         </div>
                     </div>                    
                 </div>

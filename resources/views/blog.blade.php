@@ -3,11 +3,7 @@
 
 @section('content')
 
-    <div class="blog-page-title p-3">
-        <h3 class="text-center">Blog Posts</h3>
-    </div>
-
-    <div class="blog-area">
+    <div class="blog-area mt-5 mb-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
