@@ -63,6 +63,8 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/user/post/{id}', [AdminController::class, 'userPost'])->name('admin.user.posts');
     Route::get('/admin/approval-user/{id}', [AdminController::class, 'userApproval'])->name('admin.user.approval');
     Route::get('/admin/add-user',       [AdminController::class, 'addUser'])->name('admin.add.user');
+    Route::post('/admin/add-user',      [AdminController::class, 'addNewUser'])->name('admin.add.new.user');
+    Route::get('/admin/role-change/{id}', [AdminController::class, 'makeAdmin'])->name('admin.user.role.change');
     Route::get('/admin/admin-users',    [AdminController::class, 'adminUsers'])->name('admin.admin.users');
     Route::get('/admin/delete-user/{id}', [AdminController::class, 'deleteUser'])->name('admin.delete.user');
     

@@ -36,12 +36,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Image</th>
+                            <th style="width: 3%">Image</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Posts</th>
                             <th>Created at</th>
-                            <th>Action</th>
+                            <th style="width: 28%">Action</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -72,20 +72,18 @@
                             <td align="center">{{ $user->created_at->toFormattedDateString() }}</td>                            
                             <td>
                                 <a href="{{ route('admin.user.posts', $user->id) }}" class="btn btn-sm btn-primary">Post List</a>
-
-                                @if(!Auth::user()->id === $user->id)
-                                    @if($user->status == 0)
-                                        <a href="{{ route('admin.user.approval', $user->id) }}" class="btn btn-sm btn-warning">Disable</a>
-                                    @else
-                                        <a href="{{ route('admin.user.approval', $user->id) }}" class="btn btn-sm btn-success" style="padding: 4px 12px;">Active</a>
-                                    @endif
-                                @endif    
+                                
+                                @if($user->status == 0)
+                                    <a href="{{ route('admin.user.approval', $user->id) }}" class="btn btn-sm btn-warning">Disable</a>
+                                @else
+                                    <a href="{{ route('admin.user.approval', $user->id) }}" class="btn btn-sm btn-success" style="padding: 4px 12px;">Active</a>
+                                @endif
+                                
+                                <a href="{{ route('admin.user.role.change', $user->id) }}" class="btn btn-sm btn-secondary">Make as User</a>
                                 
                                 <a href="{{ route('admin.edit.post', $user->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
 
-                                @if(!Auth::user()->id === $user->id)
                                 <a href="{{ route('admin.delete.user', $user->id) }}" onclick="return confirm('Are you sure, delete this user?')" class="btn btn-sm btn-danger">Delete</a>
-                                @endif
 
                             </td>                            
                         </tr>

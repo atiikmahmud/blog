@@ -10,7 +10,7 @@
         <h1 class="h3 mb-0 text-gray-800">Add Post</h1>
     </div>
 
-    <!-- Edit Page -->
+    <!-- Add Post Page -->
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-12">

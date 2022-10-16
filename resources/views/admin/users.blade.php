@@ -36,12 +36,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Image</th>
+                            <th style="width: 3%">Image</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Posts</th>
                             <th>Created at</th>
-                            <th>Action</th>
+                            <th style="width: 28%">Action</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -78,6 +78,8 @@
                                 @else
                                     <a href="{{ route('admin.user.approval', $user->id) }}" class="btn btn-sm btn-success" style="padding: 4px 12px;">Active</a>
                                 @endif
+
+                                <a href="{{ route('admin.user.role.change', $user->id) }}" class="btn btn-sm btn-secondary">Make as Admin</a>
                                 
                                 <a href="{{ route('admin.edit.post', $user->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
 

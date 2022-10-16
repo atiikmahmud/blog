@@ -9,6 +9,7 @@ use App\Models\Post;
 use App\Models\Reply;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
@@ -177,6 +178,58 @@ class AdminController extends Controller
     {
       $title = 'Add User';
       return view('admin.add-user', compact('title'));
+    }
+
+    public function addNewUser(Request $request)
+    {
+      $request->validate([
+        'name'    => 'required',
+        'email'   => 'required',
+        'role' => 'required',
+        'password' => 'required|min:8',
+        'c_password' => 'required|min:8'
+      ]);
+
+      if($request->password !== $request->c_password)
+      {
+        return redirect()->back()->with('error', 'The password confirmation does not match..!');
+      }
+      else
+      {
+        try
+        {
+          $user = new User;
+          $user->name     = $request->name;
+          $user->email    = $request->email;
+          $user->role     = $request->role;
+          $user->password = Hash::make($request->password);
+          $user->save();
+
+          return redirect()->back()->with('success', 'User created successfully !!');
+        }
+        catch(\Exception $e)
+        {
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', 'User not created !!');
+        }
+      }
+    }
+
+    public function makeAdmin($id)
+    {
+      $user = User::find($id);
+      if($user->role == 0)
+      {
+        $user->role = 1;
+        $user->save();      
+        return redirect()->back()->with('success', 'Admin access created!');
+      }
+      else
+      {
+        $user->role = 0;
+        $user->save();      
+        return redirect()->back()->with('fail', 'Admin access deleted!'); 
+      }
     }
 
     public function adminUsers()
