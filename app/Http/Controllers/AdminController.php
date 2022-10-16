@@ -239,6 +239,49 @@ class AdminController extends Controller
       return view('admin.admin-users', compact('title', 'users'));
     }
 
+    public function editUser($id)
+    {
+      $user = User::where('id', $id)->first();
+      $name = $user->name;
+      $title = "$name's profile";
+      return view('admin.edit-user', compact('title', 'user'));
+
+    }
+
+    public function upadteUser(Request $request)
+    {
+      $request->validate([
+        'name'    => 'required',
+        'email'   => 'required',
+        'role' => 'required'
+      ]);
+
+      if($request->password !== $request->c_password)
+      {
+        return redirect()->back()->with('error', 'The password confirmation does not match..!');
+      }
+      else
+      {
+
+        try{
+            $user = User::find($request->id);
+            $user->name     = $request->name;
+            $user->email    = $request->email;
+            $user->role     = $request->role;
+            if($request->password){
+              $user->password = Hash::make($request->password);
+            }
+            $user->save();
+
+            return redirect()->back()->with('success', 'Profile updated successfully !!');
+        }
+        catch(\Exception $e){
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', 'Profile not update !!');
+        }
+      }
+    }
+
     public function deleteUser($id)
     {
       $reply = Reply::where('user_id', $id);

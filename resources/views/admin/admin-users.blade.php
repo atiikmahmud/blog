@@ -81,7 +81,7 @@
                                 
                                 <a href="{{ route('admin.user.role.change', $user->id) }}" class="btn btn-sm btn-secondary">Make as User</a>
                                 
-                                <a href="{{ route('admin.edit.post', $user->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
+                                <a href="{{ route('admin.edit.user', $user->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
 
                                 <a href="{{ route('admin.delete.user', $user->id) }}" onclick="return confirm('Are you sure, delete this user?')" class="btn btn-sm btn-danger">Delete</a>
 
