@@ -51,7 +51,7 @@
 
                     <div class="card-body">
                         <div class="post-form-area">        
-                            <form action="{{ route('admin.update.post') }}" method="POST" novalidate>
+                            <form action="{{ route('admin.update.post') }}" method="POST" enctype="multipart/form-data" novalidate>
                                 @csrf
                                 <div class="form-group mb-3">
                                     
@@ -69,6 +69,18 @@
                                     <option value="{{ $item->id }}" @if($item->id === $post->category_id) selected @endif >{{ $item->name }}</option>
                                     @endforeach
                                 </select>                       
+                                </div>
+
+                                @if($post->image)
+                                <div class="form-group mb-3">
+                                <label>Current Image</label>
+                                    <img src="{{ asset('image/'.$post->image) }}" alt="" class='d-block mx-auto p-2' style="height: 200px; width: 400px;" />
+                                </div>
+                                @endif                     
+
+                                <div class="form-group mb-3">
+                                    <label>Change Image</label>
+                                    <input type="file" class="form-control-file" name="image" />                     
                                 </div>
             
                                 <div class="form-group mb-3">

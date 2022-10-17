@@ -50,7 +50,7 @@
 
                     <div class="card-body">
                         <div class="post-form-area">        
-                            <form action="{{ route('admin.new.post') }}" method="POST" novalidate>
+                            <form action="{{ route('admin.new.post') }}" method="POST" enctype="multipart/form-data" novalidate>
                                 @csrf
                                 <div class="form-group mb-3">
             
@@ -66,6 +66,11 @@
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
                                 </select>                       
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label>Post Image</label>
+                                    <input type="file" class="form-control-file" name="image" required />                     
                                 </div>
             
                                 <div class="form-group mb-3">

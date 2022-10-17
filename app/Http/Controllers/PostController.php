@@ -87,16 +87,6 @@ class PostController extends Controller
         ]);
 
         try{
-
-            // if ($image = $request->file('image')) {
-            //     $destinationPath = 'image/';
-            //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            //     $image->move($destinationPath, $postImage);
-            //     $input['image'] = "$postImage";
-            // }else{
-            //     unset($input['image']);
-            // }
-
             $post = Post::find($request->id);
             if($request->has('image') && !empty($request->image))
             {
