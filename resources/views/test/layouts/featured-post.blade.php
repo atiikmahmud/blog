@@ -7,7 +7,13 @@
             
             @foreach($featurePosts as $posts)
             <div class="position-relative overflow-hidden" style="height: 300px;">
-                <img class="img-fluid h-100" src="{{ asset('assets2/img/news-700x435-1.jpg') }}" style="object-fit: cover;">
+                
+                @if($posts->image)
+                    <img class="img-fluid h-100" src="image/{{ $posts->image }}" style="object-fit: cover;">
+                    @else
+                    <img class="img-fluid h-100" src="{{ asset('assets2/img/news-800x500-1.jpg') }}" style="object-fit: cover;">
+                @endif
+
                 <div class="overlay">
                     <div class="mb-2">
                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"

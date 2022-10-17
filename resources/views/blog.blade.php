@@ -14,8 +14,11 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="post-image p-1">
-                                                <img src="https://us.123rf.com/450wm/creativepriyanka/creativepriyanka1905/creativepriyanka190500599/124082851-demo-icon.jpg?ver=6"
-                                                    alt="" height="250px" width="250px">
+                                                @if($post->image)
+                                                <img src="{{ asset('image/'.$post->image) }}" alt="" class='d-block mx-auto border' style="height: 250px; width: 250px;" />
+                                                @else                            
+                                                <img src="https://us.123rf.com/450wm/creativepriyanka/creativepriyanka1905/creativepriyanka190500599/124082851-demo-icon.jpg?ver=6" alt="" class='d-block mx-auto border' style="height: 250px; width: 250px;" />
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-md-8">

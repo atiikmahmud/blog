@@ -5,7 +5,11 @@
                 
                 @foreach($sliders as $slider)
                 <div class="position-relative overflow-hidden" style="height: 500px;">
+                    @if($slider->image)
+                    <img class="img-fluid h-100" src="image/{{ $slider->image }}" style="object-fit: cover;">
+                    @else
                     <img class="img-fluid h-100" src="{{ asset('assets2/img/news-800x500-1.jpg') }}" style="object-fit: cover;">
+                    @endif
                     <div class="overlay">
                         <div class="mb-2">
                             <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
@@ -47,7 +51,13 @@
                 @foreach($latestPosts as $posts)
                 <div class="col-md-6 px-0">                    
                     <div class="position-relative overflow-hidden" style="height: 250px;">
-                        <img class="img-fluid w-100 h-100" src="{{ asset('assets2/img/news-700x435-1.jpg') }}" style="object-fit: cover;">
+                        
+                        @if($posts->image)
+                        <img class="img-fluid w-100 h-100" src="image/{{ $posts->image }}" style="object-fit: cover;">
+                        @else
+                        <img class="img-fluid w-100 h-100" src="{{ asset('assets2/img/news-800x500-1.jpg') }}" style="object-fit: cover;">
+                        @endif
+
                         <div class="overlay">
                             <div class="mb-2">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"

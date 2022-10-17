@@ -19,7 +19,11 @@
                     </div>
                     <div class="card-body">
                         <div class="post-image-section">
+                            @if($post->image)
+                            <img src="{{ asset('image/'.$post->image) }}" alt="" class='d-block mx-auto' style="height: 300px; width: 60%;" />
+                            @else                            
                             <img src="https://us.123rf.com/450wm/creativepriyanka/creativepriyanka1905/creativepriyanka190500599/124082851-demo-icon.jpg?ver=6" alt="" class='d-block mx-auto' style="height: 300px; width: 300px;" />
+                            @endif
                         </div>
                         <div class="post-body py-3">
                             <h5>{{ $post->title }}</h5>

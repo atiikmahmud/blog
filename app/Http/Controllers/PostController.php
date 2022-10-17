@@ -21,12 +21,22 @@ class PostController extends Controller
     {
         $request->validate([
             'title'    => 'required',
-            'body'   => 'required',
-            'tag' => 'required'
+            'body'     => 'required',
+            'tag'      => 'required',
+            'image'    => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         try{
+            
+            if ($image = $request->file('image')) {
+                $destinationPath = 'image/';
+                $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $postImage);
+                $input['image'] = "$postImage";
+            }
+            
             $post = new Post;
+            $post->image   = $postImage;
             $post->title   = $request->title;
             $post->body    = $request->body;
             $post->tag     = $request->tag;
@@ -67,14 +77,37 @@ class PostController extends Controller
 
     public function update(Request $request)
     {
+        // dd($request);
+        
         $request->validate([
             'title'    => 'required',
             'body'   => 'required',
-            'tag' => 'required'
+            'tag' => 'required',
+            'image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         try{
+
+            // if ($image = $request->file('image')) {
+            //     $destinationPath = 'image/';
+            //     $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            //     $image->move($destinationPath, $postImage);
+            //     $input['image'] = "$postImage";
+            // }else{
+            //     unset($input['image']);
+            // }
+
             $post = Post::find($request->id);
+            if($request->has('image') && !empty($request->image))
+            {
+
+                $image = $request->file('image');
+                $destinationPath = 'image/';
+                $postImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->move($destinationPath, $postImage);
+                $input['image'] = "$postImage";
+                $post->image   = $postImage;
+            }
             $post->title   = $request->title;
             $post->body    = $request->body;
             $post->tag     = $request->tag;

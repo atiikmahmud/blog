@@ -38,7 +38,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('store.post') }}" method="POST" novalidate>
+                    <form action="{{ route('store.post') }}" method="POST" enctype="multipart/form-data" novalidate>
                         @csrf
                       <div class="form-group mb-3">
                         <label>Title</label>
@@ -52,6 +52,10 @@
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                           @endforeach
                         </select>                       
+                      </div>
+                      <div class="form-group mb-3">
+                        <label>Post Image</label>
+                        <input type="file" class="form-control" name="image" required />                     
                       </div>
                       <div class="form-group mb-3">
                         <label>Post Details</label>
