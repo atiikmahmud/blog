@@ -1,10 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light shadow sticky-top">
     <div class="container">
       <a class="navbar-brand" href="/">
-        <img src="{{url('/image/blog-logo.png')}}" alt="" class="d-inline" height="35px" width="35px">
-        <div class="brand-title d-inline">
-          Blog
-        </div>
+        <img src="{{url('/image/logo-x-black.png')}}" alt="" class="d-inline" height="40px" width="100px">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

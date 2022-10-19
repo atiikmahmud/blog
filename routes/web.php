@@ -10,13 +10,11 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/',                     [HomesController::class, 'index']);
-
-// Route::get('/',                         [HomeController::class, 'index'])->name('home');
-// Route::get('/blog',                     [HomeController::class, 'blog'])->name('blog');
-// Route::get('/single-post/{id}',         [HomeController::class, 'show'])->name('single.post');
-// Route::get('/about-us',                 [HomeController::class, 'aboutUs'])->name('about-us');
-// Route::get('/contacts',                 [HomeController::class, 'contacts'])->name('contacts');
+Route::get('/',                         [HomeController::class, 'index'])->name('home');
+Route::get('/blog',                     [HomeController::class, 'blog'])->name('blog');
+Route::get('/single-post/{id}',         [HomeController::class, 'show'])->name('single.post');
+Route::get('/about-us',                 [HomeController::class, 'aboutUs'])->name('about-us');
+Route::get('/contacts',                 [HomeController::class, 'contacts'])->name('contacts');
 Route::get('/register',                 [HomeController::class, 'register'])->name('register');
 Route::get('/login',                    [HomeController::class, 'login'])->name('login');
 
@@ -77,8 +75,6 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/messages',       [ContactController::class, 'index'])->name('admin.messages');
     Route::get('/admin/unread-messages',[ContactController::class, 'unreadMsg'])->name('admin.unread.message');
     Route::get('/admin/messages/{id}',  [ContactController::class, 'show'])->name('message.show');
-    Route::delete('/admin/message-delete/{id}', [ContactController::class, 'destroy'])->name('message.destroy');
-    
-    
+    Route::delete('/admin/message-delete/{id}', [ContactController::class, 'destroy'])->name('message.destroy');    
 
 });

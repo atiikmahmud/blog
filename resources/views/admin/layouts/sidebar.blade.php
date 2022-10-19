@@ -3,9 +3,8 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.index') }}">
         <div class="sidebar-brand-icon">
-           <i class="fab fa-blogger-b"></i>
+            <img src="{{url('/image/logo-x-white.png')}}" alt="" class="d-inline" height="50px" width="120px">
         </div>
-        <div class="sidebar-brand-text mx-3">Blog</div>
     </a>
 
     <!-- Divider -->

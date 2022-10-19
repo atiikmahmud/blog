@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Admin - @yield('title')</title>
-    <link rel = "icon" type = "image/png" href = "{{url('/image/blog-logo.png')}}">
+    <link rel = "icon" type = "image/png" href = "{{url('/image/fev-icon.png')}}">
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
