@@ -4,8 +4,8 @@
             <div class="col-sm-3">
                 <div class="footer-box footer-logo-address">
                     <!-- address  -->
-                    {{-- <img src="{{ asset('assets3/images/logo.png') }}" class="img-responsive" alt=""> --}}
-                    <div class="h1">Data Blog</div>
+                    <img src="{{ asset('assets3/images/logo-x-white.png') }}" class="img-responsive" alt="">
+                    {{-- <div class="h1">Data Blog</div> --}}
                     <address>
                         Dhaka, Bangladesh
                         <br> Tell: 01749-941982

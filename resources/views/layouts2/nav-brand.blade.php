@@ -5,7 +5,7 @@
                 <div class="header-logo">
                     <!-- logo -->
                     <a href="home-style-one.html">
-                        <img class="td-retina-data img-responsive" src="{{ asset('assets3/images/logo.png') }}" alt="">
+                        <img class="td-retina-data img-responsive" src="{{ asset('assets3/images/logo-x-black.png') }}" alt="">
                     </a>
                 </div>
             </div>
