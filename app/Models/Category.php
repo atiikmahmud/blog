@@ -12,4 +12,13 @@ class Category extends Model
     protected $table = 'categories';
 
     protected $fillables = ['name', 'details'];
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class,'category_id','id');
+    }
+    public function last_post()
+    {
+        return $this->hasOne(Post::class,'category_id','id')->orderByDesc('created_at');
+    }
 }

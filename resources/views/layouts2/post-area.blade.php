@@ -8,10 +8,11 @@
                 <div class="row">
                     <div id="content-slide" class="owl-carousel">
                         <!-- item-1 -->
+                        @foreach ($featurePosts as $ftpost)
                         <div class="item">
                             <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
                                 <!-- image -->
-                                <h3><a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting.</a></h3>
+                                <h3><a href="#">{{ Str::limit($ftpost->title, 40) }}</a></h3>
                                 <div class="post-thumb">
                                     <a href="#">
                                         <img class="img-responsive" src="{{ asset('assets3/images/recent_news_01.jpg') }}" alt="">
@@ -19,79 +20,31 @@
                                 </div>
                                 <div class="post-info meta-info-rn">
                                     <div class="slide">
-                                        <a target="_blank" href="#" class="post-badge btn_six">T</a>
+                                        <a target="_blank" href="#" class="post-badge bg-danger" style="color: black;">{{ $ftpost->categories->name }}</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="post-title-author-details">
                                 <div class="post-editor-date">
                                     <div class="post-date">
-                                        <i class="pe-7s-clock"></i> Oct 6, 2016
+                                        <i class="pe-7s-clock"></i> 
+                                        {{ $ftpost->created_at->toFormattedDateString() }}
                                     </div>
                                     <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
                                 </div>
-                                <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <a href="#">Read more...</a></p>
+                                <p>{!! html_entity_decode(Str::limit($ftpost->body, 80)) !!}<a href="#">Read more...</a></p>
                             </div>
                         </div>
-                        <!-- item-2 -->
-                        <div class="item">
-                            <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                                <!-- image -->
-                                <h3><a href="#">Contrary to popular belief, Lorem Ipsum is not simply random text.</a></h3>
-                                <div class="post-thumb">
-                                    <a href="#">
-                                        <img class="img-responsive" src="{{ asset('assets3/images/recent_news_02.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="post-info meta-info-rn">
-                                    <div class="slide">
-                                        <a target="_blank" href="#" class="post-badge btn_sev">I</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-title-author-details">
-                                <div class="post-editor-date">
-                                    <div class="post-date">
-                                        <i class="pe-7s-clock"></i> Oct 6, 2016
-                                    </div>
-                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
-                                </div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text <a href="#">Read more...</a></p>
-                            </div>
-                        </div>
-                        <!-- item-3 -->
-                        <div class="item">
-                            <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-                                <!-- image -->
-                                <h3><a href="#">There are many variations of passages of Lorem Ipsum available</a></h3>
-                                <div class="post-thumb">
-                                    <a href="#">
-                                        <img class="img-responsive" src="{{ asset('assets3/images/recent_news_03.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="post-info meta-info-rn">
-                                    <div class="slide">
-                                        <a target="_blank" href="#" class="post-badge btn_five">B</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-title-author-details">
-                                <div class="post-editor-date">
-                                    <div class="post-date">
-                                        <i class="pe-7s-clock"></i> Oct 6, 2016
-                                    </div>
-                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
-                                </div>
-                                <p>All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true <a href="#">Read more...</a></p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 
                 
                 <div class="row rn_block">
-                    <h3 class="category-headding ">Top 10 Posts</h3>
+                    <h3 class="category-headding ">Top 9 Posts</h3>
                     <div class="headding-border bg-color-3"></div>
+                    
+                    @foreach ($all_posts as $post)
                     <div class="col-md-4 col-sm-6 padd">
                         <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
                             <!-- image -->
@@ -102,68 +55,21 @@
                             </div>
                             <div class="post-info meta-info-rn">
                                 <div class="slide">
-                                    <a target="_blank" href="#" class="post-badge btn_eight">H</a>
+                                    <a target="_blank" href="#" class="post-badge bg-danger" style="color: black;">{{ $post->categories->name }}</a>
                                 </div>
                             </div>
                         </div>
                         <div class="post-title-author-details">
-                            <h4><a href="#">World Econmy Changing and Affecting in 3rd ...</a></h4>
+                            <h4><a href="#">{{ Str::limit($post->title, 40) }}</a></h4>
                             <div class="post-editor-date">
                                 <div class="post-date">
-                                    <i class="pe-7s-clock"></i> Oct 6, 2016
+                                    <i class="pe-7s-clock"></i> {{ $post->created_at->toFormattedDateString() }}
                                 </div>
                                 <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-6 padd">
-                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <!-- image -->
-                            <div class="post-thumb">
-                                <a href="#">
-                                    <img class="img-responsive" src="{{ asset('assets3/images/recent_news_05.jpg') }}" alt="">
-                                </a>
-                            </div>
-                            <div class="post-info meta-info-rn">
-                                <div class="slide">
-                                    <a target="_blank" href="#" class="post-badge btn_nine">p</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-title-author-details">
-                            <h4><a href="#">It is a long established fact that a reader will be ...</a></h4>
-                            <div class="post-editor-date">
-                                <div class="post-date">
-                                    <i class="pe-7s-clock"></i> Oct 6, 2016
-                                </div>
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 hidden-sm padd">
-                        <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-                            <!-- image -->
-                            <div class="post-thumb">
-                                <a href="#">
-                                    <img class="img-responsive" src="{{ asset('assets3/images/recent_news_06.jpg') }}" alt="">
-                                </a>
-                            </div>
-                            <div class="post-info meta-info-rn">
-                                <div class="slide">
-                                    <a target="_blank" href="#" class="post-badge btn_one">F</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post-title-author-details">
-                            <h4><a href="#">Various versions have evolved over the years, ...</a></h4>
-                            <div class="post-editor-date">
-                                <div class="post-date">
-                                    <i class="pe-7s-clock"></i> Oct 6, 2016
-                                </div>
-                                <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </section>                
         </div>
@@ -184,12 +90,9 @@
                 <div class="headding-border bg-color-2"></div>
                 <div class="cats-widget">
                     <ul>
-                        <li class=""><a href="#" title="Title goes here.">Fashion</a> <span>12</span></li>
-                        <li class=""><a href="#" title="Title goes here.">Beauty</a> <span>9</span></li>
-                        <li class=""><a href="#">Travel</a> <span>32</span></li>
-                        <li class=""><a href="#" title="Title goes here.">Lifestyle</a> <span>50</span></li>
-                        <li class=""><a href="#">Video</a> <span>22</span></li>
-                        <li class=""><a href="#">Inspiration</a> <span>39</span></li>
+                        @foreach ($all_categories as $cat)                            
+                        <li class=""><a href="#" title="Title goes here.">{{ $cat->name }}</a> <span>{{ $cat->posts_count }}</span></li>
+                        @endforeach
                     </ul>
                 </div>
             </aside>
@@ -203,82 +106,29 @@
                 <!-- tabs -->
                 <div class="tab_content">
                     <div class="tab-item-inner">
+                        
+                        @foreach($trandingPosts as $tdpost)
                         <div class="box-item wow fadeIn" data-wow-duration="1s">
                             <div class="img-thumb">
                                 <a href="#" rel="bookmark"><img class="entry-thumb" src="{{ asset('assets3/images/popular_news_01.jpg') }}" alt="" height="80" width="90"></a>
                             </div>
                             <div class="item-details">
                                 <h6 class="sub-category-title bg-color-1">
-                                        <a href="#">SPORTS</a>
+                                        <a href="#">{{ $tdpost->categories->name }}</a>
                                     </h6>
-                                <h3 class="td-module-title"><a href="#">It is a long established fact that a reader will</a></h3>
+                                <h3 class="td-module-title"><a href="#">{{ Str::limit($tdpost->title, 40) }}</a></h3>
                                 <div class="post-editor-date">
                                     <!-- post date -->
                                     <div class="post-date">
-                                        <i class="pe-7s-clock"></i> Oct 6, 2016
+                                        <i class="pe-7s-clock"></i> 
+                                        {{ $tdpost->created_at->toFormattedDateString() }}
                                     </div>
                                     <!-- post comment -->
                                     <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="box-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
-                            <div class="img-thumb">
-                                <a href="#" rel="bookmark"><img class="entry-thumb" src="{{ asset('assets3/images/popular_news_02.jpg') }}" alt="" height="80" width="90"></a>
-                            </div>
-                            <div class="item-details">
-                                <h6 class="sub-category-title bg-color-2">
-                                        <a href="#">TECHNOLOGY </a>
-                                    </h6>
-                                <h3 class="td-module-title"><a href="#">The generated Lorem Ipsum is therefore</a></h3>
-                                <div class="post-editor-date">
-                                    <!-- post date -->
-                                    <div class="post-date">
-                                        <i class="pe-7s-clock"></i> Oct 6, 2016
-                                    </div>
-                                    <!-- post comment -->
-                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                            <div class="img-thumb">
-                                <a href="#" rel="bookmark"><img class="entry-thumb" src="{{ asset('assets3/images/popular_news_03.jpg') }}" alt="" height="80" width="90"></a>
-                            </div>
-                            <div class="item-details">
-                                <h6 class="sub-category-title bg-color-3">
-                                        <a href="#">HEALTH</a>
-                                    </h6>
-                                <h3 class="td-module-title"><a href="#">The standard chunk of Lorem Ipsum used since</a></h3>
-                                <div class="post-editor-date">
-                                    <!-- post date -->
-                                    <div class="post-date">
-                                        <i class="pe-7s-clock"></i> Oct 6, 2016
-                                    </div>
-                                    <!-- post comment -->
-                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.3s">
-                            <div class="img-thumb">
-                                <a href="#" rel="bookmark"><img class="entry-thumb" src="{{ asset('assets3/images/popular_news_04.jpg') }}" alt="" height="80" width="90"></a>
-                            </div>
-                            <div class="item-details">
-                                <h6 class="sub-category-title bg-color-4">
-                                        <a href="#">FASHION</a>
-                                    </h6>
-                                <h3 class="td-module-title"><a href="#">Lorem Ipum therefore always free from</a></h3>
-                                <div class="post-editor-date">
-                                    <!-- post date -->
-                                    <div class="post-date">
-                                        <i class="pe-7s-clock"></i> Oct 6, 2016
-                                    </div>
-                                    <!-- post comment -->
-                                    <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <!-- / tab item -->
                     <div class="tab-item-inner">
