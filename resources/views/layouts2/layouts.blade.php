@@ -21,18 +21,8 @@
     </header>
     <!-- ===== Main Body Area Start ===== -->
 
-    <!-- Slider Section Start -->
-    @include('layouts2.slider-section')
-    <!-- Slider Section End -->
-
-    <!-- Post Area with Categories Start -->
-    @include('layouts2.post-area')
-    <!-- Post Area with Categories End -->
-    
-
-    <!-- Category Area Start -->
-    @include('layouts2.categories-area')
-    <!-- Category Area End -->
+    @section('content')
+    @show
 
     <!-- ===== Main Body Area End ===== -->
 

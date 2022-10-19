@@ -3,6 +3,8 @@
         <div class="row row-margin">
             <div class="col-xs-12 col-md-6 col-sm-6 col-padding">
                 <div id="news-feed-carousel" class="owl-carousel owl-theme">
+                    
+                    @foreach($sliders as $slider)
                     <div class="item">
                         <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
                             <div class="post-thumb img-zoom-in">
@@ -11,12 +13,14 @@
                                 </a>
                             </div>
                             <div class="post-info">
-                                <span class="color-2">FASHION </span>
-                                <h3 class="post-title"><a href="#" rel="bookmark">The 20 free things in Sydney with your girlfriend </a></h3>
+                                <span class="color-2">{{ $slider->categories->name }} </span>
+                                <h3 class="post-title"><a href="#" rel="bookmark">
+                                    {{ Str::limit($slider->title, 40) }} </a></h3>
                                 <div class="post-editor-date">
                                     <!-- post date -->
                                     <div class="post-date">
-                                        <i class="pe-7s-clock"></i> Oct 6, 2016
+                                        <i class="pe-7s-clock"></i> 
+                                        {{ $slider->created_at->toFormattedDateString() }}
                                     </div>
                                     <!-- post comment -->
                                     <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
@@ -26,7 +30,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="item">
+                    @endforeach
+
+
+                    {{-- <div class="item">
                         <div class="post-wrapper wow fadeIn" data-wow-duration="2s">
                             <div class="post-thumb img-zoom-in">
                                 <a href="#">
@@ -71,7 +78,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <!-- right side post -->
@@ -82,6 +89,8 @@
                             <!-- item-1 -->
                             <div class="item">
                                 <div class="row rn_block">
+                                    
+                                    @foreach($latestPosts as $lspost)
                                     <div class="col-md-6 col-sm-6 padd">
                                         <div class="post-wrapper wow fadeIn" data-wow-duration="1s">
                                             <!-- image -->
@@ -92,21 +101,24 @@
                                             </div>
                                             <div class="post-info meta-info-rn">
                                                 <div class="slide">
-                                                    <a target="_blank" href="#" class="post-badge btn_five">B</a>
+                                                    <a target="_blank" href="#" class="post-badge bg-danger" style="color: black;"> {{ $lspost->categories->name }}</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="post-title-author-details">
-                                            <h4><a href="#">World Econmy Changing and Affecting in 3rd ...</a></h4>
+                                            <h4><a href="#">{{ Str::limit($lspost->title, 40) }}</a></h4>
                                         </div>
                                         <div class="post-editor-date">
                                             <div class="post-date">
-                                                <i class="pe-7s-clock"></i> Oct 6, 2016
+                                                <i class="pe-7s-clock"></i> 
+                                                {{ $lspost->created_at->toFormattedDateString() }}
                                             </div>
                                             <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-sm-6 padd">
+                                    @endforeach
+
+                                    {{-- <div class="col-md-6 col-sm-6 padd">
                                         <div class="post-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
                                             <!-- image -->
                                             <div class="post-thumb">
@@ -177,7 +189,7 @@
                                             </div>
                                             <div class="post-author-comment"><i class="pe-7s-comment"></i> 13 </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

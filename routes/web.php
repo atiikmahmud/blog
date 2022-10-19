@@ -10,13 +10,13 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/test',                     [HomesController::class, 'index']);
+Route::get('/',                     [HomesController::class, 'index']);
 
-Route::get('/',                         [HomeController::class, 'index'])->name('home');
-Route::get('/blog',                     [HomeController::class, 'blog'])->name('blog');
-Route::get('/single-post/{id}',         [HomeController::class, 'show'])->name('single.post');
-Route::get('/about-us',                 [HomeController::class, 'aboutUs'])->name('about-us');
-Route::get('/contacts',                 [HomeController::class, 'contacts'])->name('contacts');
+// Route::get('/',                         [HomeController::class, 'index'])->name('home');
+// Route::get('/blog',                     [HomeController::class, 'blog'])->name('blog');
+// Route::get('/single-post/{id}',         [HomeController::class, 'show'])->name('single.post');
+// Route::get('/about-us',                 [HomeController::class, 'aboutUs'])->name('about-us');
+// Route::get('/contacts',                 [HomeController::class, 'contacts'])->name('contacts');
 Route::get('/register',                 [HomeController::class, 'register'])->name('register');
 Route::get('/login',                    [HomeController::class, 'login'])->name('login');
 
