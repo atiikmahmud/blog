@@ -31,13 +31,14 @@ class HomeController extends Controller
             }
         }
         
-        $posts = $query->where('status', 1)->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(10);
-        // $latestPost = Post::where('status', 1)->orderBy('id', 'desc')->latest()->take(5)->get();
+        $posts = $query->where('status', 1)->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(7);
+        $sliders = Post::with('categories')->where('slider', 1)->where('status', 1)->take(3)->get();
+        $featurePosts = Post::with('categories')->where('feature_news', 1)->where('status',1)->orderBy('id', 'desc')->latest()->take(4)->get();
         $trandingPosts = Post::with('categories')->where('tranding_news', 1)->where('status',1)->orderBy('id', 'desc')->latest()->take(5)->get();
         $category = Category::withCount('posts')->get();
         $tags = Post::select('tag')->distinct()->where('status', 1)->get();
         $queryData = $request->query();
-        return view('home', compact('title', 'posts', 'trandingPosts', 'category', 'tags', 'queryData'));
+        return view('home', compact('title', 'posts', 'trandingPosts', 'category', 'tags', 'queryData','sliders','featurePosts'));
     }
 
     public function show($id)

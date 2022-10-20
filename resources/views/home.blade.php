@@ -3,21 +3,52 @@
 
 @section('content')
 
-{{-- <div class="home">
-    <div class="welcome-msg mt-5">
-        <img src="{{url('/image/welcome.webp')}}" class="d-block mx-auto" alt="" style="height: 300px" />
-        <div class="welcome-msg-title h2 text-center">
-            <img src="{{url('/image/logo-x-black.png')}}" alt="">
+<div class="container mt-4">
+    <div class="slider-section" style="background-color: #f3f3f3; min-height: 400px;">
+        <div class="row">
+            <div class="col-md-8" style="padding-right: 0%">
+                <div class="sliders">
+                    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                          @foreach($sliders as $key => $slide)
+                          <div class="carousel-item @if($key == 0) active @endif" data-bs-interval="2000">
+                            <a href="{{ route('single.post', $slide->id) }}">
+                                <img src="{{ asset('image/'.$slide->image) }}" class="d-block w-100" alt="..." height="400px">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5 class="bg-dark text-light p-1">{{ Str::limit($slide->title, 50) }}</h5>
+                            </div>
+                            </a>
+                          </div>
+                          @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="padding-left: 0%; padding-right: 24px">
+                <div class="row">
+                    @foreach($featurePosts as $ftpost)
+                    <div class="col-md-6" style="padding-right: 0%;">
+                        <a href="{{ route('single.post', $ftpost->id) }}" class="text-decoration-none text-dark">
+                            @if($ftpost->image)
+                            <img src="{{ asset('image/'.$ftpost->image) }}" alt="" height="135px" width="100%">
+                            @else
+                            <img src="https://t3.ftcdn.net/jpg/01/22/45/42/240_F_122454272_3uT1sZUrm0qpOmRYcnnkc8bbbgMTkmFe.jpg" alt="" height="135px" width="100%">
+                            @endif
+                        <p class="px-1">{{ Str::limit($ftpost->title, 45) }}</p></a>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
-        @if(!auth()->user())
-        <div class="user-status text-center mt-3">
-            If you are not registred on this app, <a href="/register">registred here.</a>
-        </div>
-        @endif
     </div>
-</div> --}}
+</div>
 
-<div class="blog-area mt-5 mb-3">
+<div class="blog-area mt-4 mb-3">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
