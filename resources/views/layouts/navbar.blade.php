@@ -11,8 +11,15 @@
           <li class="nav-item">
             <a class="nav-link @if($title == 'Home') active @endif" aria-current="page" href="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Categories</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu">
+              @foreach($category as $item)  
+              <li><a class="dropdown-item" href="{{ route('home', ['category_id' => $item->id]) }}">{{ $item->name }}</a></li>
+              @endforeach
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link @if($title == 'About Us') active @endif" href="/about-us">About Us</a>

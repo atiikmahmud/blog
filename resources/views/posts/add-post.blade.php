@@ -48,7 +48,7 @@
                         <label>Category</label>
                         <select class="form-select mt-1" aria-label="category" name="category" required>
                           <option value="1" selected>Select category</option>
-                          @foreach($categories as $item)
+                          @foreach($category as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                           @endforeach
                         </select>                       

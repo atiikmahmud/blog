@@ -57,7 +57,7 @@
                         <label>Category</label>
                         <select class="form-select mt-1" aria-label="category" name="category" value="{{ $post->category_id }}" required>
                           <option value="1" selected>Select category</option>
-                          @foreach($categories as $item)
+                          @foreach($category as $item)
                             <option value="{{ $item->id }}" @if($item->id === $post->category_id) selected @endif >{{ $item->name }}</option>
                           @endforeach
                         </select>                       

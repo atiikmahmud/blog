@@ -13,8 +13,8 @@ class PostController extends Controller
     public function addPost()
     {
         $title = 'Add-Post';
-        $categories = Category::all();
-        return view('posts.add-post', compact('title', 'categories'));
+        $category = Category::withCount('posts')->get();
+        return view('posts.add-post', compact('title','category'));
     }
 
     public function store(Request $request)
@@ -55,24 +55,26 @@ class PostController extends Controller
     public function userPost()
     {
         $title = 'Posts';
+        $category = Category::withCount('posts')->get();
         $posts = Post::with('categories')->where('user_id', Auth()->user()->id)->orderBy('created_at', 'desc')->paginate(7);
-        return view('posts.all-posts', compact('title', 'posts'));
+        return view('posts.all-posts', compact('title', 'posts','category'));
     }
 
     public function show($id)
     {
         $title = 'Posts';
+        $category = Category::withCount('posts')->get();
         $post = Post::where('id', $id)->first();
         $comments = Comment::with('users')->with('reply')->where('post_id', $id)->get();
-        return view('posts.single-post', compact('title', 'post', 'comments'));
+        return view('posts.single-post', compact('title', 'post', 'comments','category'));
     }
 
     public function edit($id)
     {
         $title = 'Edit Post';
         $post = Post::where('id', $id)->first();
-        $categories = Category::all();
-        return view('posts.edit', compact('title', 'post', 'categories'));
+        $category = Category::withCount('posts')->get();
+        return view('posts.edit', compact('title', 'post', 'category'));
     }
 
     public function update(Request $request)

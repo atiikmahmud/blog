@@ -24,7 +24,6 @@ Route::fallback(function ()
 Route::post('/contacts',                [ContactController::class, 'store'])->name('contact.post');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified' ])->group(function () {
-    // Route::get('/dashboard',            [UserController::class, 'index'])->name('dashboard');
     Route::get('/profile',              [UserController::class, 'profile'])->name('user.profile');
     
     Route::get('/add-post',             [PostController::class, 'addPost'])->name('add.post');

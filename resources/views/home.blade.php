@@ -76,8 +76,8 @@
                         </div>
                         <ul class="list-group">
                           @foreach($category as $item)  
-                            <li class="list-group-item"><i class="fas fa-chevron-right"></i> <a href="{{ route('home', ['category_id' => $item->id]) }}"
-                                    style="text-decoration: none; color:black;">{{ $item->name }}</a></li>
+                            <li class="list-group-item d-flex justify-content-between"> <a href="{{ route('home', ['category_id' => $item->id]) }}"
+                                    style="text-decoration: none; color:black;"><i class="fas fa-chevron-right"></i> {{ $item->name }}</a><div class="d-inline"><span class="badge text-bg-secondary">{{ $item->posts_count }}</span></div></li>
                           @endforeach
                         </ul>
                     </div>
@@ -106,13 +106,13 @@
 
                     <div class="latest-post-section py-2">
                         <div class="section-title h5">
-                            Latest Posts
+                            Tranding Posts
                         </div>
                         <ul class="list-group">
-                            @foreach ($latestPost as $lp)
+                            @foreach ($trandingPosts as $tp)
                                 <li class="list-group-item"><i class="fas fa-copy"></i> <a
-                                        href="{{ route('single.post', $lp->id) }}"
-                                        style="text-decoration: none; color:black;">{{ $lp->title }}</a></li>
+                                        href="{{ route('single.post', $tp->id) }}"
+                                        style="text-decoration: none; color:black;">{{ Str::limit($tp->title, 45) }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -126,7 +126,7 @@
                         <ul class="list-group">
                             @foreach ($tags as $tag)
                                 <li class="list-group-item"><a href="{{ route('home', ['tag' => $tag->tag]) }}"
-                                        class="text-decoration-none text-dark"><i class="fas fa-tag "></i>
+                                        class="text-decoration-none text-dark text-lowercase"><i class="fas fa-tag "></i>
                                         {{ $tag->tag }}</a></li>
                             @endforeach
                         </ul>

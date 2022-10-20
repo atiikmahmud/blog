@@ -32,41 +32,47 @@ class HomeController extends Controller
         }
         
         $posts = $query->where('status', 1)->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(10);
-        $latestPost = Post::where('status', 1)->orderBy('id', 'desc')->latest()->take(5)->get();
-        $category = Category::all();
+        // $latestPost = Post::where('status', 1)->orderBy('id', 'desc')->latest()->take(5)->get();
+        $trandingPosts = Post::with('categories')->where('tranding_news', 1)->where('status',1)->orderBy('id', 'desc')->latest()->take(5)->get();
+        $category = Category::withCount('posts')->get();
         $tags = Post::select('tag')->distinct()->where('status', 1)->get();
         $queryData = $request->query();
-        return view('home', compact('title', 'posts', 'latestPost', 'category', 'tags', 'queryData'));
+        return view('home', compact('title', 'posts', 'trandingPosts', 'category', 'tags', 'queryData'));
     }
 
     public function show($id)
     {
         $title = 'Posts';
+        $category = Category::withCount('posts')->get();
         $post = Post::with('users')->where('id', $id)->first();
         $comments = Comment::with('users')->with('reply.users')->where('post_id', $id)->get();
-        return view('single-post', compact('title', 'post', 'comments'));
+        return view('single-post', compact('title', 'post', 'category', 'comments'));
     }
 
     public function aboutUs()
     {
         $title = 'About Us';
-        return view('about-us', compact('title'));
+        $category = Category::withCount('posts')->get();
+        return view('about-us', compact('title','category'));
     }
 
     public function contacts()
     {
         $title = 'Contacts';
-        return view('contacts', compact('title'));
+        $category = Category::withCount('posts')->get();
+        return view('contacts', compact('title','category'));
     }
 
     public function register()
     {
         if (Auth::user()){
             $title = 'Home';
-            return view('home', compact('title'));
+            $category = Category::withCount('posts')->get();
+            return view('home', compact('title','category'));
         }else{
             $title = 'Register';
-            return view('register', compact('title'));
+            $category = Category::withCount('posts')->get();
+            return view('register', compact('title','category'));
         }
     }
 
@@ -74,10 +80,12 @@ class HomeController extends Controller
     {
         if (Auth::user()){
             $title = 'Home';
-            return view('home', compact('title'));
+            $category = Category::withCount('posts')->get();
+            return view('home', compact('title','category'));
         }else{
             $title = 'Login';
-            return view('login', compact('title'));
+            $category = Category::withCount('posts')->get();
+            return view('login', compact('title','category'));
         }
     }
 }
