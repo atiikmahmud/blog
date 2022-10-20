@@ -14,7 +14,7 @@
                             {{ Str::limit($post->title, 75) }}
                         </div>
                         <div class="all-post">
-                            <a href="{{ route('blog') }}" class="btn btn-sm btn-dark">Posts</a>
+                            <a href="{{ route('home') }}" class="btn btn-sm btn-dark">Posts</a>
                         </div>
                     </div>
                     <div class="card-body">

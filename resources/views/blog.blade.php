@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <div class="blog-area mt-5 mb-3">
+    {{-- <div class="blog-area mt-5 mb-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-9">
@@ -122,6 +122,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 @endsection

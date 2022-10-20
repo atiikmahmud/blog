@@ -11,14 +11,9 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $title = 'Home';
-        return view('home', compact('title'));
-    }
-
-    public function blog(Request $request)
-    {
         $query = Post::query()->where('status', 1);
         if(count($request->all()) > 0)
         {
@@ -36,13 +31,12 @@ class HomeController extends Controller
             }
         }
         
-        $title = 'Posts';
         $posts = $query->where('status', 1)->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(10);
         $latestPost = Post::where('status', 1)->orderBy('id', 'desc')->latest()->take(5)->get();
         $category = Category::all();
         $tags = Post::select('tag')->distinct()->where('status', 1)->get();
         $queryData = $request->query();
-        return view('blog', compact('title', 'posts', 'latestPost', 'category', 'tags', 'queryData'));
+        return view('home', compact('title', 'posts', 'latestPost', 'category', 'tags', 'queryData'));
     }
 
     public function show($id)
@@ -50,7 +44,6 @@ class HomeController extends Controller
         $title = 'Posts';
         $post = Post::with('users')->where('id', $id)->first();
         $comments = Comment::with('users')->with('reply.users')->where('post_id', $id)->get();
-        // dd($post->toArray());
         return view('single-post', compact('title', 'post', 'comments'));
     }
 
