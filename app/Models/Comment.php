@@ -23,8 +23,8 @@ class Comment extends Model
         return $this->belongsTo(Post::class,'post_id','id');
     }
 
-    public function reply()
+    public function replies()
     {
-        return $this->hasMany(Reply::class);
+        return $this->hasMany(static::class, 'parent_id','id')->with('replies', 'replies.users');
     }
 }

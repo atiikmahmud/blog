@@ -46,7 +46,8 @@ class HomeController extends Controller
         $title = 'Posts';
         $category = Category::withCount('posts')->get();
         $post = Post::with('users')->where('id', $id)->first();
-        $comments = Comment::with('users')->with('reply.users')->where('post_id', $id)->get();
+        $comments = Comment::with('users', 'replies', 'replies.users')->where('post_id', $id)->where('parent_id', null)->get();
+        // dd($comments->toArray());
         return view('single-post', compact('title', 'post', 'category', 'comments'));
     }
 

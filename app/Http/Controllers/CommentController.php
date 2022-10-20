@@ -47,10 +47,10 @@ class CommentController extends Controller
         ]);
 
         try{
-            $reply = new Reply;
-            $reply->reply    = $request->reply;
+            $reply = new Comment;
+            $reply->text    = $request->reply;
             $reply->post_id  = $request->post_id;
-            $reply->comment_id  = $request->comment_id;
+            $reply->parent_id  = $request->comment_id;
             $reply->user_id = Auth()->user()->id;
             $reply->save();
 

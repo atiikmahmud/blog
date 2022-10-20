@@ -80,29 +80,13 @@
                                                         <div class="comments-reply">
                                                             <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ $loop->index }}" aria-expanded="false" aria-controls="collapseExample{{ $loop->index }}"><i class="fas fa-reply"></i> Reply</button>
                                                             <div class="comment-reply-form"  style="padding-left: 50px; padding-right: 10px;">
-                                                                @if($item->reply)
-                                                                    @foreach($item->reply as $items)
-                                                                    <div class="row">
-                                                                        <div class="col-md-1 mt-2">
-                                                                            @if($items->users->profile_photo_path)
-                                                                            <img src="/storage/profile-photos/{{ basename( $items->users->profile_photo_path) }}" alt="" class="border rounded-circle" style="height: 40px; width: 40px; "/>
-                                                                            @else
-                                                                            <img src="{{ $items->users->profile_photo_url }}" alt="" class="border rounded-circle" style="height: 40px; width: 40px; "/>
-                                                                            @endif
-                                                                        </div>
-                                                                        <div class="col-md-11">
-                                                                            <div class="comment-text p-2 rounded mb-2" style="background-color: #f3f3f3; margin-left: 15px; margin-right: 10px; ">
-                                                                                <p class="d-inline">
-                                                                                    <strong>{{ $items->users->name }}</strong><br>
-                                                                                    {{ $items->reply }}
-                                                                                </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                                                @if(count($item->replies) > 0)
+                                                                    @foreach($item->replies as $reply)
+                                                                    @include('reply', ['reply' => $reply])
                                                                     @endforeach
                                                                 @endif
 
-                                                                <div class="comment-box collapse" id="collapseExample{{ $loop->index }}" style="padding-left: 10px; padding-right: 10px;">
+                                                                {{-- <div class="comment-box collapse" id="collapseExample{{ $loop->index }}" style="padding-left: 10px; padding-right: 10px;">
                                     
                                                                     @if ($errors->any())
                                                                         @foreach ($errors->all() as $error)
@@ -120,7 +104,7 @@
                                                                         <textarea name="reply" cols="20" rows="2" class='form-control' placeholder="comment reply.." required></textarea>
                                                                         <button type="submit" class='btn btn-sm btn-primary mt-2'>Reply</button>
                                                                     </form>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                         </div>
                                                     </div>
