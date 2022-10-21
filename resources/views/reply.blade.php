@@ -13,10 +13,34 @@
                 {{ $reply->text }}
             </p>
         </div>
+        <div class="comments-reply">
+
+            <span><i class="fas fa-reply"></i> Reply</span>
+            <div class="comment-reply-form"  style="padding-left: 50px; padding-right: 10px; margin-bottom: 10px;">
+                <div style="padding-left: 10px; padding-right: 10px;">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+                                {{ $error }}
+                                <button type="button" class="btn btn-sm btn-close" style="padding: 8px" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endforeach
+                    @endif
+
+                    <form action="{{ route('reply.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        <input type="hidden" name="comment_id" value="{{ $item->id }}">
+                        <textarea name="reply" cols="20" rows="2" class='form-control' placeholder="comment reply.." required></textarea>
+                        <button type="submit" class='btn btn-sm btn-primary mt-2'>Reply</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+    @if(count($reply->replies) > 0)
+        @foreach($reply->replies as $replyitem)
+            @include('reply', ['reply' => $replyitem, 'class' => 'margin-left: 40px;']) 
+        @endforeach
+    @endif
 </div>
-@if(count($reply->replies) > 0)
-    @foreach($reply->replies as $replyitem)
-        @include('reply', ['reply' => $replyitem, 'class' => 'margin-left: 40px;']) 
-    @endforeach
-@endif

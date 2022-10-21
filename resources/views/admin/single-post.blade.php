@@ -87,9 +87,9 @@
                                     Comments
                                 </div>
                                 <div class="row">
-                                    <div class="previous-comments mb-3">
-                                        <div class="col-md-12">
-                                                @foreach($comments as $item)
+                                    @foreach($comments as $item)
+                                        <div class="previous-comments mb-3">
+                                            <div class="col-md-6">
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         <div class="col-md-1">
@@ -102,38 +102,24 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-11">
-                                                            <div class="comment-text p-2 rounded" style="background-color: #f3f3f3; margin-left: 20px; margin-right: 10px; ">
+                                                            <div class="comment-text p-2 rounded" style="background-color: #f3f3f3; margin-left: 10px; margin-right: 10px; ">
                                                                 <p class="d-inline">
                                                                      <strong>{{ $item->users->name }}</strong><br>
                                                                     {{ $item->text }}
                                                                 </p>
                                                             </div>
-                                                            <div class="comments-reply ml-2">
-                                                                <button class="btn" type="button" data-toggle="collapse" data-target="#collapseExample{{ $loop->index }}" aria-expanded="false" aria-controls="collapseExample{{ $loop->index }}"><i class="fas fa-reply"></i> Reply</button>
+                                                            <div class="comments-reply">
+    
+                                                                <span><i class="fas fa-reply"></i> Reply</span>
+                                                                
                                                                 <div class="comment-reply-form"  style="padding-left: 50px; padding-right: 10px;">
-                                                                    @if($item->reply)
-                                                                        @foreach($item->reply as $items)
-                                                                        <div class="row">
-                                                                            <div class="col-md-1 mt-2">
-                                                                                @if($items->users->profile_photo_path)
-                                                                                <img src="/storage/profile-photos/{{ basename( $items->users->profile_photo_path) }}" alt="" class="border rounded-circle" style="height: 40px; width: 40px; "/>
-                                                                                @else
-                                                                                <img src="{{ $items->users->profile_photo_url }}" alt="" class="border rounded-circle" style="height: 40px; width: 40px; "/>
-                                                                                @endif
-                                                                            </div>
-                                                                            <div class="col-md-10">
-                                                                                <div class="comment-text p-2 rounded mb-2" style="background-color: #f3f3f3; margin-left: 25px;">
-                                                                                    <p class="d-inline">
-                                                                                        <strong>{{ $items->users->name }}</strong><br>
-                                                                                        {{ $items->reply }}
-                                                                                    </p>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                    @if(count($item->replies) > 0)
+                                                                        @foreach($item->replies as $reply)
+                                                                        @include('reply', ['reply' => $reply])
                                                                         @endforeach
                                                                     @endif
     
-                                                                    <div class="comment-box collapse" id="collapseExample{{ $loop->index }}" style="padding-left: 10px; padding-right: 10px;">
+                                                                    <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px">
                                         
                                                                         @if ($errors->any())
                                                                             @foreach ($errors->all() as $error)
@@ -152,19 +138,22 @@
                                                                             <button type="submit" class='btn btn-sm btn-primary mt-2'>Reply</button>
                                                                         </form>
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                @endforeach
                                             </div>
                                         </div>
+                                    @endforeach
     
-                                    <div class="col-md-12">                                  
+                                    <div class="col-md-6">                                  
+                                        @if(auth()->user())
                                         <div class="container-fluid">
                                             <div class="row">
-                                                <div class="col-md-5">
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-11">
                                                     <div class="comment-box" style="padding-left: 10px;">
                                                         
                                                         @if ($errors->any())
@@ -185,7 +174,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>                                   
+                                        </div>
+                                        @else                                
+                                        <p class='pt-3'>* If you login here, you can comment in this post.</p>
+                                        @endif                                    
                                     </div>
                                 </div>
                             </div>

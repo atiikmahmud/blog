@@ -78,7 +78,9 @@
                                                             </p>
                                                         </div>
                                                         <div class="comments-reply">
-                                                            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{ $loop->index }}" aria-expanded="false" aria-controls="collapseExample{{ $loop->index }}"><i class="fas fa-reply"></i> Reply</button>
+
+                                                            <span><i class="fas fa-reply"></i> Reply</span>
+                                                            
                                                             <div class="comment-reply-form"  style="padding-left: 50px; padding-right: 10px;">
                                                                 @if(count($item->replies) > 0)
                                                                     @foreach($item->replies as $reply)
@@ -86,7 +88,7 @@
                                                                     @endforeach
                                                                 @endif
 
-                                                                {{-- <div class="comment-box collapse" id="collapseExample{{ $loop->index }}" style="padding-left: 10px; padding-right: 10px;">
+                                                                <div style="padding-left: 10px; padding-right: 10px; margin-bottom: 10px">
                                     
                                                                     @if ($errors->any())
                                                                         @foreach ($errors->all() as $error)
@@ -104,7 +106,8 @@
                                                                         <textarea name="reply" cols="20" rows="2" class='form-control' placeholder="comment reply.." required></textarea>
                                                                         <button type="submit" class='btn btn-sm btn-primary mt-2'>Reply</button>
                                                                     </form>
-                                                                </div> --}}
+                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
