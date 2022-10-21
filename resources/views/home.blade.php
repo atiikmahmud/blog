@@ -48,7 +48,23 @@
     </div>
 </div>
 
-<div class="blog-area mt-4 mb-3">
+<div class="breaking-news-section my-4">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-9">
+                <div class="news-section border d-flex justify-content-between" style="min-height: 35px; background-color: #f3f3f3; padding-top: 5px;">
+                    <div class="text-uppercase bg-dark text-light text-bold d-inline border">hot post </div>                    
+                    <marquee class="d-block" onmouseover="this.stop();" onmouseout="this.start();" 
+                        direction="left" behavior="scroll" scrollamount="7">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, a necessitatibus. Quae fugit consectetur sunt.
+                    </marquee>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="blog-area  mb-3">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
