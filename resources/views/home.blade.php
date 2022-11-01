@@ -4,9 +4,9 @@
 @section('content')
 
 <div class="container mt-4">
-    <div class="slider-section" style="background-color: #f3f3f3; min-height: 400px;">
+    <div class="slider-section" style="background-color: #f3f3f3; height: 500px;">
         <div class="row">
-            <div class="col-md-8" style="padding-right: 0%">
+            <div class="col-md-12" style="padding-right: 0%">
                 <div class="sliders">
                     <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
@@ -18,7 +18,7 @@
                           @foreach($sliders as $key => $slide)
                           <div class="carousel-item @if($key == 0) active @endif" data-bs-interval="2000">
                             <a href="{{ route('single.post', $slide->id) }}">
-                                <img src="{{ asset('image/'.$slide->image) }}" class="d-block w-100" alt="..." height="400px">
+                                <img src="{{ asset('image/'.$slide->image) }}" class="d-block w-100" alt="..." height="500px">
                             <div class="carousel-caption d-none d-md-block">
                               <h5 class="bg-dark text-light p-1">{{ Str::limit($slide->title, 50) }}</h5>
                             </div>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" style="padding-left: 0%; padding-right: 24px">
+            {{-- <div class="col-md-4" style="padding-left: 0%; padding-right: 24px">
                 <div class="row">
                     @foreach($featurePosts as $ftpost)
                     <div class="col-md-6" style="padding-right: 0%;">
@@ -43,7 +43,7 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -52,10 +52,14 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-9">
-                <div class="news-section border d-flex justify-content-between" style="min-height: 35px; background-color: #f3f3f3; padding-top: 5px;">
-                    <div class="text-uppercase bg-dark text-light text-bold d-inline border">hot post </div>                    
+                <div class="news-section border d-flex justify-content-between" style="height: 35px; background-color: #f3f3f3;">
+                    <div class="text-uppercase bg-dark text-light text-bold d-inline border" style="height: 100%; width: 120px; text-align: center; padding-top: 5px;
+                    ">hot news </div>                    
                     <marquee class="d-block" onmouseover="this.stop();" onmouseout="this.start();" 
-                        direction="left" behavior="scroll" scrollamount="7">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo, a necessitatibus. Quae fugit consectetur sunt.
+                        direction="left" behavior="scroll" scrollamount="7" style="padding-top: 5px;">
+                        @foreach($breakingNews as $news)
+                        <a href="{{ route('single.post', $news->id) }}" class="text-decoration-none text-dark">{{ $news->title }}</a> &ensp; -- &ensp;
+                        @endforeach
                     </marquee>
                     
                 </div>
@@ -117,20 +121,6 @@
 
             <div class="col-md-3">
                 <div class="sidebar p-3" style="background-color: #f3f3f3;">
-                    <div class="categories-section py-2">
-                        <div class="section-title h5">
-                            Categories
-                        </div>
-                        <ul class="list-group">
-                          @foreach($category as $item)  
-                            <li class="list-group-item d-flex justify-content-between"> <a href="{{ route('home', ['category_id' => $item->id]) }}"
-                                    style="text-decoration: none; color:black;"><i class="fas fa-chevron-right"></i> {{ $item->name }}</a><div class="d-inline"><span class="badge text-bg-secondary">{{ $item->posts_count }}</span></div></li>
-                          @endforeach
-                        </ul>
-                    </div>
-
-                    <hr>
-
                     <div class="search-post-section py-2">
                         <div class="section-title h5">
                             Search
@@ -147,6 +137,20 @@
                                 </div>
                             </form>
                         </div>
+                    </div>
+
+                    <hr>
+                    
+                    <div class="categories-section py-2">
+                        <div class="section-title h5">
+                            Categories
+                        </div>
+                        <ul class="list-group">
+                          @foreach($category as $item)  
+                            <li class="list-group-item d-flex justify-content-between"> <a href="{{ route('home', ['category_id' => $item->id]) }}"
+                                    style="text-decoration: none; color:black;"><i class="fas fa-chevron-right"></i> {{ $item->name }}</a><div class="d-inline"><span class="badge text-bg-secondary">{{ $item->posts_count }}</span></div></li>
+                          @endforeach
+                        </ul>
                     </div>
 
                     <hr>

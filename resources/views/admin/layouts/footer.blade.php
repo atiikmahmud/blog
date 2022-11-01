@@ -44,7 +44,7 @@ aria-hidden="true">
         .catch( error => {
             console.error( error );
         } );
-  </script>
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>

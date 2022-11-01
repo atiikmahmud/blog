@@ -31,7 +31,7 @@
         .ck-editor__editable{
           min-height: 185px;
         }
-      </style>
+    </style>
 
 </head>
 

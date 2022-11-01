@@ -31,14 +31,15 @@ class HomeController extends Controller
             }
         }
         
-        $posts = $query->where('status', 1)->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(7);
+        $posts = $query->where('status', 1)->with('users')->with('categories')->orderBy('created_at', 'desc')->paginate(6);
         $sliders = Post::with('categories')->where('slider', 1)->where('status', 1)->take(3)->get();
         $featurePosts = Post::with('categories')->where('feature_news', 1)->where('status',1)->orderBy('id', 'desc')->latest()->take(4)->get();
         $trandingPosts = Post::with('categories')->where('tranding_news', 1)->where('status',1)->orderBy('id', 'desc')->latest()->take(5)->get();
+        $breakingNews = Post::where('breaking_news', 1)->where('status',1)->orderBy('id', 'desc')->latest()->take(3)->get();
         $category = Category::withCount('posts')->get();
-        $tags = Post::select('tag')->distinct()->where('status', 1)->get();
+        $tags = Post::select('tag')->distinct()->where('status', 1)->take(15)->get();
         $queryData = $request->query();
-        return view('home', compact('title', 'posts', 'trandingPosts', 'category', 'tags', 'queryData','sliders','featurePosts'));
+        return view('home', compact('title', 'posts', 'trandingPosts', 'category', 'tags', 'queryData','sliders','featurePosts','breakingNews'));
     }
 
     public function show($id)
