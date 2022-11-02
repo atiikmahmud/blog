@@ -29,21 +29,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-4" style="padding-left: 0%; padding-right: 24px">
-                <div class="row">
-                    @foreach($featurePosts as $ftpost)
-                    <div class="col-md-6" style="padding-right: 0%;">
-                        <a href="{{ route('single.post', $ftpost->id) }}" class="text-decoration-none text-dark">
-                            @if($ftpost->image)
-                            <img src="{{ asset('image/'.$ftpost->image) }}" alt="" height="135px" width="100%">
-                            @else
-                            <img src="https://t3.ftcdn.net/jpg/01/22/45/42/240_F_122454272_3uT1sZUrm0qpOmRYcnnkc8bbbgMTkmFe.jpg" alt="" height="135px" width="100%">
-                            @endif
-                        <p class="px-1">{{ Str::limit($ftpost->title, 45) }}</p></a>
-                    </div>
-                    @endforeach
-                </div>
-            </div> --}}
         </div>
     </div>
 </div>
