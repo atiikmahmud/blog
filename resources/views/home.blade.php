@@ -20,7 +20,7 @@
                             <a href="{{ route('single.post', $slide->id) }}">
                                 <img src="{{ asset('image/'.$slide->image) }}" class="d-block w-100" alt="..." height="500px">
                             <div class="carousel-caption d-none d-md-block">
-                              <h5 class="bg-dark text-light p-1">{{ Str::limit($slide->title, 50) }}</h5>
+                              <h5 class="text-light p-1" style="background-color: rgba(0, 0, 0, 0.377)">{{ Str::limit($slide->title, 70) }}</h5>
                             </div>
                             </a>
                           </div>

@@ -28,16 +28,16 @@
     <!-- Nav Item - Pages Collapse Menu -->
     
     <!-- Nav Item - Charts -->
-    <li class="nav-item  @if($title == 'Posts') active @endif">
+    <li class="nav-item  @if($title == 'Posts' || $title == 'Add Post') active @endif">
         <a class="nav-link" href="{{ route('admin.posts') }}">
             <i class="fas fa-poll-h"></i>
             <span>Posts</span></a>
     </li>
 
-    <li class="nav-item  @if($title == 'Add Post') active @endif">
-        <a class="nav-link" href="{{ route('admin.add.post') }}">
-            <i class="fas fa-file-signature"></i>
-            <span>Add Post</span></a>
+    <li class="nav-item  @if($title == 'Category' || $title == 'Add Category') active @endif">
+        <a class="nav-link" href="{{ route('post.category') }}">
+            <i class="fas fa-list-ul"></i>
+            <span>Categories</span></a>
     </li>
 
     <li class="nav-item  @if($title == 'Comments') active @endif">
@@ -63,7 +63,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     
     <!-- Nav Item - Charts -->
-    <li class="nav-item  @if($title == 'Users') active @endif">
+    <li class="nav-item  @if($title == 'Users' || $title == 'Add User') active @endif">
         <a class="nav-link" href="{{ route('admin.users') }}">
             <i class="fas fa-users"></i>
             <span>Users</span></a>
@@ -73,13 +73,7 @@
         <a class="nav-link" href="{{ route('admin.admin.users') }}">
             <i class="fas fa-user-shield"></i>
             <span>Admin Users</span></a>
-    </li>
-
-    <li class="nav-item  @if($title == 'Add User') active @endif">
-        <a class="nav-link" href="{{ route('admin.add.user') }}">
-            <i class="fas fa-user-plus"></i>
-            <span>Add User</span></a>
-    </li>    
+    </li>  
 
     <!-- Divider -->
     <hr class="sidebar-divider">

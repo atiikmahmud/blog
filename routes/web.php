@@ -53,6 +53,9 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::delete('/admin/post-delete/{id}',[AdminController::class, 'postDestroy'])->name('admin.delete.post');
     Route::get('/admin/posts/{id}',     [AdminController::class, 'showPost'])->name('admin.show.post');
     Route::get('/admin/post-approval/{id}',  [AdminController::class, 'postApproval'])->name('admin.post.approval');
+
+    Route::get('/admin/post-category',  [AdminController::class, 'category'])->name('post.category');
+    Route::get('/admin/add-post-category', [AdminController::class, 'addCategory'])->name('post.category.add');
     
     Route::get('/admin/comments',       [CommentController::class, 'index'])->name('admin.comments');
     Route::delete('/admin/comment/delete/{id}', [CommentController::class, 'destroy'])->name('admin.comment.delete');

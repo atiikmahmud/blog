@@ -7,8 +7,8 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Posts</h1>
-        <div><a href="{{ route('admin.add.post') }}" class="btn btn-sm btn-dark">Add Post</a></div>
+        <h1 class="h3 mb-0 text-gray-800">Categories</h1>
+        <div><a href="{{ route('post.category.add') }}" class="btn btn-sm btn-dark">Add Category</a></div>
     </div>
 
     <!-- Begin DataTales -->
@@ -46,7 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($posts as $post)
+                        {{-- @foreach($posts as $post)
                         <tr>
                             <td>{{ Str::limit($post->title, 40) }}</td>                            
                             <td>{{ $post->categories->name }}</td>                            
@@ -71,7 +71,7 @@
                                 </form>
                             </td>                            
                         </tr>
-                        @endforeach
+                        @endforeach --}}
                     </tbody>
                 </table>
             </div>
