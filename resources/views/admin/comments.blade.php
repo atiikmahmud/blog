@@ -43,15 +43,6 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Post title</th>
-                            <th>User</th>
-                            <th>Comments</th>
-                            <th>Created at</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         @if($comments)
                         @foreach($comments as $comment)

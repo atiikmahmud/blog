@@ -41,19 +41,10 @@
                             <th>Email</th>
                             <th>Posts</th>
                             <th>Created at</th>
+                            <th>Role Change</th>
                             <th style="width: 28%">Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Posts</th>
-                            <th>Created at</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         @foreach($users as $user)
                         <tr>
@@ -69,7 +60,8 @@
                             <td>{{ $user->name }}</td>                            
                             <td>{{ $user->email }}</td>                            
                             <td align="center">{{App\Models\Post::where('user_id', $user->id)->count()}}</td>                           
-                            <td align="center">{{ $user->created_at->toFormattedDateString() }}</td>                            
+                            <td align="center">{{ $user->created_at->toFormattedDateString() }}</td>
+                            <td><a href="{{ route('admin.user.role.change', $user->id) }}" class="btn btn-sm btn-secondary">Make as User</a></td>                            
                             <td>
                                 <a href="{{ route('admin.user.posts', $user->id) }}" class="btn btn-sm btn-primary">Post List</a>
                                 
@@ -78,8 +70,6 @@
                                 @else
                                     <a href="{{ route('admin.user.approval', $user->id) }}" class="btn btn-sm btn-success" style="padding: 4px 12px;">Active</a>
                                 @endif
-                                
-                                <a href="{{ route('admin.user.role.change', $user->id) }}" class="btn btn-sm btn-secondary">Make as User</a>
                                 
                                 <a href="{{ route('admin.edit.user', $user->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
 

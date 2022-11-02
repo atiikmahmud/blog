@@ -1,7 +1,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Blog 2022</span>
+            <span>Copyright © 2022 Data Blog. All rights reserved.</span>
         </div>
     </div>
 </footer>

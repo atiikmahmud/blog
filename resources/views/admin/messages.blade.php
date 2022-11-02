@@ -34,15 +34,6 @@
                             <th style="width: 15%">Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Message</th>
-                            <th>Date</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         @foreach($messages as $item)
                         <tr>

@@ -44,16 +44,6 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-                            <th>Post by</th>
-                            <th>Created at</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
                         @foreach($posts as $post)
                         <tr>

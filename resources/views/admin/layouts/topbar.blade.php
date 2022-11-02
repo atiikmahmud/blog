@@ -58,7 +58,7 @@
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                    Post approval
+                    Post approval request
                 </h6>
                 @foreach (App\Models\Post::where('status',0)->orderBy('id', 'desc')->latest()->take(2)->get() as $item)
                 <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.show.post', $item->id) }}">
