@@ -13,7 +13,7 @@
     <!-- Add Post Page -->
     <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="add-post-area">
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
@@ -49,21 +49,21 @@
                         </div>
 
                     <div class="card-body">
-                        <div class="post-form-area">        
+                        <div class="add-category-form-area">        
                             <form action="" method="POST">
                                 @csrf
                                 <div class="form-group mb-3">            
-                                <label>Category Name</label>
-                                <input type="text" class='form-control mt-1' id="title" name="name" required />                        
+                                    <label>Category Name</label>
+                                    <input type="text" class='form-control mt-1' id="title" name="name" required />                        
                                 </div>
             
                                 <div class="form-group mb-3">
-                                <label>Category Details</label>
-                                <input type="text" class='form-control mt-1' id="tag" name="details" required/>               
+                                    <label>Category Details</label>
+                                    <input type="text" class='form-control mt-1' id="tag" name="details" required/>               
                                 </div>
             
                                 <div class="form-group d-flex justify-content-end">
-                                <button type='submit' class='btn btn-primary'>Submit</button>                       
+                                    <button type="submit" class="btn btn-sm btn-primary">Submit</button>               
                                 </div>  
                             </form>
                         </div>
