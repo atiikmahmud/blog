@@ -7,78 +7,71 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Categories</h1>
-        <div><a href="{{ route('post.category.add') }}" class="btn btn-sm btn-dark">Add Category</a></div>
+        <h1 class="h3 mb-0 text-gray-800">Add Category</h1>
     </div>
 
-    <!-- Begin DataTales -->
-    <div class="card shadow mb-4">
-        <div class="card-body">
+    <!-- Add Post Page -->
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12">
+                <div class="add-post-area">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="alert alert-danger alert-dismissible fade show p-1" role="alert">
+                                {{ $error }}
+                                <button type="button" class="btn btn-sm btn-close" style="padding: 8px" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endforeach
+                    @endif
+                              
+                    @if(session()->has('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session()->get('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif 
 
-            @if(session()->has('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                {{ session()->get('success') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @endif 
+                    @if(session()->has('error'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session()->get('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    <div class="card mb-5">
+                        <div class="card-header h5 d-flex justify-content-between">
+                            <div class="post-title">
+                                Add New Category
+                            </div>
+                        </div>
+
+                    <div class="card-body">
+                        <div class="post-form-area">        
+                            <form action="" method="POST">
+                                @csrf
+                                <div class="form-group mb-3">            
+                                <label>Category Name</label>
+                                <input type="text" class='form-control mt-1' id="title" name="name" required />                        
+                                </div>
             
-            @if(session()->has('fail'))
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                {{ session()->get('fail') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            @endif 
-
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-                            <th>Post by</th>
-                            <th>Created at</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{-- @foreach($posts as $post)
-                        <tr>
-                            <td>{{ Str::limit($post->title, 40) }}</td>                            
-                            <td>{{ $post->categories->name }}</td>                            
-                            <td>{{ $post->tag }}</td>
-                            <td>{{ $post->users->name }}</td>                            
-                            <td>{{ $post->created_at->toFormattedDateString() }}</td>                            
-                            <td>
-                                @if($post->status == 0)
-                                    <a href="{{ route('admin.post.approval', $post->id) }}" class="btn btn-sm btn-warning" style="padding: 4px 14px;">Pending</a>
-                                @else
-                                    <a href="{{ route('admin.post.approval', $post->id) }}" class="btn btn-sm btn-success">Approved</a>
-                                @endif
-
-                                <a href="{{ route('admin.show.post', $post->id) }}" class="btn btn-sm btn-primary">View</a>
-                                
-                                <a href="{{ route('admin.edit.post', $post->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
-
-                                <form action="{{ route('admin.delete.post', $post->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure, delete this post?')" class="btn btn-sm btn-danger">Delete</button>
-                                </form>
-                            </td>                            
-                        </tr>
-                        @endforeach --}}
-                    </tbody>
-                </table>
+                                <div class="form-group mb-3">
+                                <label>Category Details</label>
+                                <input type="text" class='form-control mt-1' id="tag" name="details" required/>               
+                                </div>
+            
+                                <div class="form-group d-flex justify-content-end">
+                                <button type='submit' class='btn btn-primary'>Submit</button>                       
+                                </div>  
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End DataTales -->
-
 </div>
 
 @endsection
