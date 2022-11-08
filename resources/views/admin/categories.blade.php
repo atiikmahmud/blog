@@ -37,41 +37,29 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Category</th>
-                            <th>Tag</th>
-                            <th>Post by</th>
+                            <th>Category Name</th>
+                            <th>Details</th>
                             <th>Created at</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach($posts as $post)
+                        @if(!empty($categories) && $categories->count())    
+                            @foreach($categories as $category)
+                            <tr>
+                                <td>{{ $category->name }}</td>                            
+                                <td>{{ $category->details }}</td>
+                                <td>{{ $category->created_at->toFormattedDateString() }}</td>                
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                </td>                            
+                            </tr>
+                            @endforeach
+                        @else
                         <tr>
-                            <td>{{ Str::limit($post->title, 40) }}</td>                            
-                            <td>{{ $post->categories->name }}</td>                            
-                            <td>{{ $post->tag }}</td>
-                            <td>{{ $post->users->name }}</td>                            
-                            <td>{{ $post->created_at->toFormattedDateString() }}</td>                            
-                            <td>
-                                @if($post->status == 0)
-                                    <a href="{{ route('admin.post.approval', $post->id) }}" class="btn btn-sm btn-warning" style="padding: 4px 14px;">Pending</a>
-                                @else
-                                    <a href="{{ route('admin.post.approval', $post->id) }}" class="btn btn-sm btn-success">Approved</a>
-                                @endif
-
-                                <a href="{{ route('admin.show.post', $post->id) }}" class="btn btn-sm btn-primary">View</a>
-                                
-                                <a href="{{ route('admin.edit.post', $post->id) }}" class="btn btn-sm btn-info" onclick="return confirm('Are you sure, edit this post?')">Edit</a>
-
-                                <form action="{{ route('admin.delete.post', $post->id) }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Are you sure, delete this post?')" class="btn btn-sm btn-danger">Delete</button>
-                                </form>
-                            </td>                            
+                            <td colspan="4" class="text-center">There are no category.</td>
                         </tr>
-                        @endforeach --}}
+                        @endif    
                     </tbody>
                 </table>
             </div>
