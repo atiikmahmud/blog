@@ -40,7 +40,7 @@
                             <th>Category Name</th>
                             <th>Details</th>
                             <th>Created at</th>
-                            <th>Action</th>
+                            <th style="width: 20%">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +51,8 @@
                                 <td>{{ $category->details }}</td>
                                 <td>{{ $category->created_at->toFormattedDateString() }}</td>                
                                 <td>
+                                    <a href="#" class="btn btn-sm btn-primary">Posts</a>
+                                    <a href="#" class="btn btn-sm btn-secondary">Edit</a>
                                     <a href="#" class="btn btn-sm btn-danger">Delete</a>
                                 </td>                            
                             </tr>
