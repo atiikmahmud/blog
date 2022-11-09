@@ -39,6 +39,7 @@
                         <tr>
                             <th>Category Name</th>
                             <th>Details</th>
+                            <th>Post Count</th>
                             <th>Created at</th>
                             <th style="width: 20%">Action</th>
                         </tr>
@@ -49,11 +50,12 @@
                             <tr>
                                 <td>{{ $category->name }}</td>                            
                                 <td>{{ $category->details }}</td>
+                                <td>{{ $category->posts_count }}</td>
                                 <td>{{ $category->created_at->toFormattedDateString() }}</td>                
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-primary">Posts</a>
+                                    <a href="{{ route('post.category.list', $category->id) }}" class="btn btn-sm btn-primary">Posts</a>
                                     <a href="#" class="btn btn-sm btn-secondary">Edit</a>
-                                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                    <a href="{{ route('post.category.destroy', $category->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>                            
                             </tr>
                             @endforeach
