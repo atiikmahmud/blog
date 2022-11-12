@@ -30,8 +30,14 @@ class CategoryController extends Controller
         return view('admin.category-posts', compact('title','posts'));
     }
 
+    public function categoryEdit($id)
+    {
+      $title = 'Edit Category';
+      return view('admin.edit-category', compact('title'));
+    }
+    
     public function destroy($id)
     {
-        
+        //
     }
 }

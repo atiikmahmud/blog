@@ -54,7 +54,7 @@
                                 <td>{{ $category->created_at->toFormattedDateString() }}</td>                
                                 <td>
                                     <a href="{{ route('post.category.list', $category->id) }}" class="btn btn-sm btn-primary">Posts</a>
-                                    <a href="#" class="btn btn-sm btn-secondary">Edit</a>
+                                    <a href="{{ route('post.category.edit', $category->id) }}" class="btn btn-sm btn-secondary">Edit</a>
                                     <a href="{{ route('post.category.destroy', $category->id) }}" class="btn btn-sm btn-danger">Delete</a>
                                 </td>                            
                             </tr>

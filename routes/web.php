@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth', 'role']], function() {
     Route::get('/admin/post-category',  [CategoryController::class, 'index'])->name('post.category');
     Route::get('/admin/add-post-category', [CategoryController::class, 'addCategory'])->name('post.category.add');
     Route::get('/admin/category-posts/{id}', [CategoryController::class, 'categoryPosts'])->name('post.category.list');
+    Route::get('/admin/category-edit/{id}', [CategoryController::class, 'categoryEdit'])->name('post.category.edit');
     Route::get('/admin/category-delete/{id}', [CategoryController::class, 'destroy'])->name('post.category.destroy');
     
     Route::get('/admin/comments',       [CommentController::class, 'index'])->name('admin.comments');
