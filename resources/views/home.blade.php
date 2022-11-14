@@ -65,20 +65,22 @@
                                     <div class="col-md-4">
                                         <div class="post-image p-1">
                                             @if($post->image)
-                                            <img src="{{ asset('image/'.$post->image) }}" alt="" class='d-block mx-auto border' style="height: 250px; width: 250px;" />
+                                            <a href="{{ route('single.post', $post->id) }}">
+                                                <img src="{{ asset('image/'.$post->image) }}" alt="" class='d-block mx-auto border' style="height: 250px; width: 250px;" />
+                                            </a>
                                             @else                            
-                                            <img src="https://us.123rf.com/450wm/creativepriyanka/creativepriyanka1905/creativepriyanka190500599/124082851-demo-icon.jpg?ver=6" alt="" class='d-block mx-auto border' style="height: 250px; width: 250px;" />
+                                            <a href="{{ route('single.post', $post->id) }}"><img src="https://us.123rf.com/450wm/creativepriyanka/creativepriyanka1905/creativepriyanka190500599/124082851-demo-icon.jpg?ver=6" alt="" class='d-block mx-auto border' style="height: 250px; width: 250px;" /></a>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="text-area-section m-3 p-2">
                                             <div class="post-date-time p-2 bg-dark text-light d-inline"
-                                                style="margin-left: -165px;">
+                                                style="margin-left: -155px;">
                                                 {{ $post->created_at->toFormattedDateString() }}
                                             </div>
                                             <div class="post-title h5">
-                                                {{ Str::limit($post->title, 45) }} <span style="font-size: 18px;"><small>by
+                                                <a class="text-decoration-none text-dark" href="{{ route('single.post', $post->id) }}">{{ Str::limit($post->title, 40) }}</a> <span style="font-size: 18px;"><small>by
                                                         {{ $post->users->name }}</small></span>
                                             </div>
                                             <div class="post-body">
