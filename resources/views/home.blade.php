@@ -43,7 +43,7 @@
                     <marquee class="d-block" onmouseover="this.stop();" onmouseout="this.start();" 
                         direction="left" behavior="scroll" scrollamount="7" style="padding-top: 5px;">
                         @foreach($breakingNews as $news)
-                        <a href="{{ route('single.post', $news->id) }}" class="text-decoration-none text-dark">{{ $news->title }}</a> &ensp; -- &ensp;
+                        <a href="{{ route('single.post', $news->id) }}" class="text-decoration-none text-dark">{{ $news->title }}</a> &ensp; - &ensp;
                         @endforeach
                     </marquee>
                     
